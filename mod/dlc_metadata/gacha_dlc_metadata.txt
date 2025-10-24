@@ -1,0 +1,6 @@
+﻿dlc_gacha = {
+	name = "Gacha!"
+	steam_id = "529340"
+	type = minor
+	priority = 0
+}
