@@ -1,0 +1,9 @@
+﻿gacha_button_main = {
+    icon = "gfx/interface/icons/gui_icons/gacha_button_main.dds"
+
+    show_in_list = no
+
+    priority = 0
+
+    character_ideology = no
+}

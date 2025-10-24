@@ -1,0 +1,133 @@
+types gacha_base_panel_types {
+
+    type gacha_base_panel = fullscreen_block_window {
+        name = "gacha_base_panel"
+        datacontext = "[GetMetaPlayer.GetPlayedOrObservedCountry]"
+
+        visible = "[GetVariableSystem.HasValue('com_open_window', 'gacha_button_main')]"
+
+        blockoverride "animation_state_block" {
+            state = {
+                name = _show
+                # Close open panel before showing this one
+                on_finish = "[InformationPanelBar.ClosePanel]"
+                on_finish = "[MapListPanelManager.CloseCurrentPanel]"
+                # Fullscreen panels hide topbar
+                on_finish = "[GetVariableSystem.Set('com_fullscreen', 'com_fullscreen')]"
+                on_finish = "[GetVariableSystem.Set('gacha_panel_tab', 'main')]"
+                start_sound = {
+                    soundeffect = "event:/SFX/UI/SideBar/markets"
+                }
+                start_sound = {
+                    soundeffect = "snapshot:/Dynamic/mute_world_80"
+                }
+                start_sound = {
+                    soundeffect = "snapshot:/Dynamic/mute_vfx_war_100"
+                }
+            }
+
+            state = {
+                name = _hide
+                on_finish = "[GetVariableSystem.Clear('com_fullscreen')]"
+                start_sound = {
+                    soundeffect = "event:/SFX/UI/SideBar/markets_stop"
+                }
+            }
+        }
+
+        blockoverride "window_header_name" {
+            text = gacha_panel_base_title
+            default_format = "#title"
+        }
+
+        back_button_large = {
+            position = { 61 116 }
+            parentanchor = top|left
+            onclick = "[GetVariableSystem.Clear('com_open_window')]"
+            onclick = "[GetVariableSystem.Clear('com_alert_action')]"
+            input_action = "back"
+        }
+        close_button_large = {
+            name = "tutorial_highlight_close_button"
+            parentanchor = top|right
+            onclick = "[GetVariableSystem.Clear('com_open_window')]"
+            onclick = "[GetVariableSystem.Clear('com_alert_action')]"
+            shortcut = "close_window"
+            position = { -56 116 }
+        }
+
+        blockoverride "back_button_fullscreen" {}
+
+        blockoverride "close_button_position" {
+            visible = no
+        }
+
+        blockoverride "fixed_top" {
+            tab_buttons_fullscreen = {
+                # Main
+                blockoverride "first_button" {
+                    text = gacha_panel_tab_main
+                }
+                blockoverride "first_button_tooltip" {
+                    tooltip = gacha_panel_tab_main
+                }
+                blockoverride "first_button_click" {
+                    onclick = "[GetVariableSystem.Set('gacha_panel_tab', 'main')]"
+                }
+                blockoverride "first_button_visibility" {
+                    visible = "[GetVariableSystem.HasValue('gacha_panel_tab', 'main')]"
+                }
+                blockoverride "first_button_visibility_checked" {
+                    visible = "[Not(GetVariableSystem.HasValue('gacha_panel_tab', 'main'))]"
+                }
+                blockoverride "first_button_selected" {
+                    text = gacha_panel_tab_main
+                }
+
+                # Library
+                blockoverride "second_button" {
+                    text = gacha_panel_tab_library
+                }
+                blockoverride "second_button_tooltip" {
+                    tooltip = gacha_panel_tab_library
+                }
+                blockoverride "second_button_click" {
+                    onclick = "[GetVariableSystem.Set('gacha_panel_tab', 'library')]"
+                }
+                blockoverride "second_button_visibility" {
+                    visible = "[GetVariableSystem.HasValue('gacha_panel_tab', 'library')]"
+                }
+                blockoverride "second_button_visibility_checked" {
+                    visible = "[Not(GetVariableSystem.HasValue('gacha_panel_tab', 'library'))]"
+                }
+                blockoverride "second_button_selected" {
+                    text = gacha_panel_tab_library
+                }
+            }
+        }
+
+        blockoverride "scrollarea_content" {
+            hbox = {
+                gacha_base_panel_main = {}
+                gacha_base_panel_library = {}
+            }
+        }
+    }
+
+    type gacha_base_panel_main = hbox {
+        layoutpolicy_vertical = expanding
+        layoutpolicy_horizontal = expanding
+        margin = { 20 20 }
+        spacing = 20
+        visible = "[GetVariableSystem.HasValue('gacha_panel_tab', 'main')]"
+    }
+
+    type gacha_base_panel_library = hbox {
+        layoutpolicy_vertical = expanding
+        layoutpolicy_horizontal = expanding
+        margin = { 20 20 }
+        spacing = 20
+        visible = "[GetVariableSystem.HasValue('gacha_panel_tab', 'library')]"
+    }
+
+}

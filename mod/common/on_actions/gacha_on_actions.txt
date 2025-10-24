@@ -1,0 +1,12 @@
+﻿# Root = any
+on_monthly_pulse = {
+    on_actions = {
+        on_monthly_gacha_ui_check
+    }
+}
+
+on_monthly_gacha_ui_check = {
+    effect = {
+        add_gacha_main_button = yes
+    }
+}

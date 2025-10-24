@@ -1,0 +1,16 @@
+﻿add_gacha_main_button = {
+    if = {
+        limit = {
+            NOT = {
+                is_target_in_global_variable_list = {
+                    name = custom_button_list_flag
+                    target = flag:gacha_button_main
+                }
+            }
+        }
+        add_to_global_variable_list = {
+            name = custom_button_list_flag
+            target = flag:gacha_button_main
+        }
+    }
+}

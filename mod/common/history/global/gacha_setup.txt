@@ -1,0 +1,5 @@
+﻿# This scripts are run after all other history scripts were run
+GLOBAL = {
+    # Add custom buttons
+    add_gacha_main_button = yes
+}

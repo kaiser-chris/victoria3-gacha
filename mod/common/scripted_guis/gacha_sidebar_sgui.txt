@@ -1,0 +1,3 @@
+﻿gacha_button_main = {
+    scope = country
+}

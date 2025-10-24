@@ -1,0 +1,10 @@
+﻿l_english:
+# Button
+ gacha_button_main: "gacha_button_main"
+ gacha_button_main_desc: "$gacha_panel_base_title$"
+ gacha_button_main_tooltip: "#header $gacha_panel_base_title$#!\nShortcut: #V $gacha_panel_base_action$#! (#V CTRL + G#!)"
+ gacha_panel_base_action: "Gacha Panel"
+# Panel
+ gacha_panel_base_title: "Gacha!"
+ gacha_panel_tab_main: "Active Gacha"
+ gacha_panel_tab_library: "Library"
