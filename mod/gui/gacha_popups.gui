@@ -7,6 +7,8 @@ widget = {
     visible = "[GetMetaPlayer.GetPlayedOrObservedCountry.IsValid]"
 
     gacha_introduction_popup = {}
+    gacha_pull_popup = {}
+    gacha_pull_result_popup = {}
 }
 
 types gacha_popups {
@@ -20,7 +22,8 @@ types gacha_popups {
 
         size = { 900 605 }
 
-        visible = "[GetScriptedGui('sgui_gacha_introduction').IsShown(GuiScope.End)]"
+        #visible = "[GetScriptedGui('sgui_gacha_introduction').IsShown(GuiScope.End)]"
+        visible = no
 
         widget = {
             size = { 100% 100% }
@@ -75,7 +78,6 @@ types gacha_popups {
             block "close_button_onclick" {
                 onclick = "[GetScriptedGui('sgui_gacha_introduction').Execute(GuiScope.End)]"
             }
-            tooltip = gacha_introduction_close
             input_action = "back"
             shortcut = "close_window"
 
@@ -88,4 +90,395 @@ types gacha_popups {
         }
     }
 
+    type gacha_pull_popup = window {
+        using = clickthrough_blocker
+        filter_mouse = all
+        movable = yes
+        allow_outside = yes
+        parentanchor = center
+
+        size = { 450 600 }
+
+        visible = "[GetVariableSystem.HasValue('com_open_window', 'gacha_pull_popup')]"
+
+        widget = {
+            size = { 100% 100% }
+
+            background = {
+                texture = "gfx/interface/backgrounds/popup_bg.dds"
+                spriteType = Corneredstretched
+                spriteborder = { 90 90 }
+                texture_density = 2
+
+                modify_texture = {
+                    texture = "gfx/interface/backgrounds/default_bg_shading.dds"
+                    spriteType = Corneredstretched
+                    spriteborder = { 0 0 }
+                    blend_mode = overlay
+                }
+                modify_texture = {
+                    using = texture_velvet
+                }
+            }
+        }
+
+        # Header
+        widget = {
+            size = { 100% 82 }
+
+            popup_top_header = {}
+
+            textbox = {
+                position = { 0 24 }
+                size = { 75% 40 }
+                text = gacha_pull_title
+                elide = right
+                fontsize_min = 14
+                parentanchor = hcenter
+                align = hcenter|nobaseline
+                using = header_font
+                using = header_font_size
+                default_format = "#header"
+            }
+        }
+
+        # Frame
+        popup_bg_frame = {}
+
+        vbox = {
+            layoutpolicy_vertical = expanding
+            layoutpolicy_horizontal = expanding
+            margin_top = 60
+
+            gacha_pull_button = {}
+        }
+
+        # Close button
+        button_icon_round = {
+            parentanchor = top|right
+            size = { 42 42 }
+            position = { -5 13 }
+
+            block "close_button_onclick" {
+                onclick = "[GetVariableSystem.Clear('com_open_window')]"
+            }
+            input_action = "back"
+            shortcut = "close_window"
+
+            blockoverride "icon" {
+                texture = "gfx/interface/buttons/button_icons/close.dds"
+            }
+            blockoverride "icon_size" {
+                size = { 100% 100% }
+            }
+        }
+    }
+
+    type gacha_pull_result_popup = window {
+        using = clickthrough_blocker
+        filter_mouse = all
+        movable = yes
+        allow_outside = yes
+        parentanchor = center
+
+        size = { 700 550 }
+
+        visible = no
+
+        widget = {
+            size = { 100% 100% }
+
+            background = {
+                texture = "gfx/interface/backgrounds/popup_bg.dds"
+                spriteType = Corneredstretched
+                spriteborder = { 90 90 }
+                texture_density = 2
+
+                modify_texture = {
+                    texture = "gfx/interface/backgrounds/default_bg_shading.dds"
+                    spriteType = Corneredstretched
+                    spriteborder = { 0 0 }
+                    blend_mode = overlay
+                }
+                modify_texture = {
+                    using = texture_velvet
+                }
+            }
+        }
+
+        # Header
+        widget = {
+            size = { 100% 82 }
+
+            popup_top_header = {}
+
+            textbox = {
+                position = { 0 24 }
+                size = { 75% 40 }
+                text = gacha_pull_result_title
+                elide = right
+                fontsize_min = 14
+                parentanchor = hcenter
+                align = hcenter|nobaseline
+                using = header_font
+                using = header_font_size
+                default_format = "#header"
+            }
+        }
+
+        widget = {
+            position = { 100 180 }
+            parentanchor = top|left
+            size = { 256 256 }
+
+            gacha_ball_open = {
+                visible = no
+                blockoverride "color_texture" {
+                    texture = "gfx/interface/gacha/balls/gacha_ball_gold.dds"
+                }
+            }
+            gacha_ball_open = {
+                visible = no
+                blockoverride "color_texture" {
+                    texture = "gfx/interface/gacha/balls/gacha_ball_red.dds"
+                }
+            }
+            gacha_ball_open = {
+                blockoverride "color_texture" {
+                    texture = "gfx/interface/gacha/balls/gacha_ball_purple.dds"
+                }
+            }
+            gacha_ball_open = {
+                visible = no
+                blockoverride "color_texture" {
+                    texture = "gfx/interface/gacha/balls/gacha_ball_green.dds"
+                }
+            }
+            gacha_ball_open = {
+                visible = no
+                blockoverride "color_texture" {
+                    texture = "gfx/interface/gacha/balls/gacha_ball_blue.dds"
+                }
+            }
+
+            gacha_ball_modifier = {
+
+            }
+        }
+        icon = {
+            position = { -30 -10 }
+            parentanchor = bottom|right
+            size = { 300 397 }
+            texture = "gfx/interface/gacha/victoria.dds"
+        }
+
+        # Frame
+        popup_bg_frame = {}
+
+        # Close button
+        button_icon_round = {
+            parentanchor = top|right
+            size = { 42 42 }
+            position = { -5 13 }
+
+            block "close_button_onclick" {
+                onclick = "[GetVariableSystem.Clear('com_open_window')]"
+            }
+            input_action = "back"
+            shortcut = "close_window"
+
+            blockoverride "icon" {
+                texture = "gfx/interface/buttons/button_icons/close.dds"
+            }
+            blockoverride "icon_size" {
+                size = { 100% 100% }
+            }
+        }
+    }
+
+    type gacha_ball_open = icon {
+        size = { 256 256 }
+        block "color_texture" {
+            texture = "gfx/interface/gacha/balls/gacha_ball_gold.dds"
+        }
+        background = {
+            margin = { 40 30 }
+            using = gacha_rotate_glow_animation
+        }
+    }
+
+    type gacha_ball_modifier = icon {
+        parentanchor = center
+        size = { 180 180 }
+        block "color_texture" {
+            texture = "gfx/interface/icons/ig_icons/armed_forces.dds"
+        }
+        using = shimmer
+    }
+
+    type gacha_pull_button = button {
+        size = { 362 450 }
+        onmousehierarchyenter = "[PdxGuiWidget.FindChild('gacha_pull_button').InterruptThenTriggerAnimation('gacha_pull_button_normal','gacha_pull_button_hover')]"
+        onmousehierarchyleave = "[PdxGuiWidget.FindChild('gacha_pull_button').InterruptThenTriggerAnimation('gacha_pull_button_hover','gacha_pull_button_normal')]"
+
+        widget = {
+            parentanchor = top
+            position = { 0 0 }
+            size = { 362 450 }
+
+            background = {
+                texture = gfx/frontend/interface/colors/black.dds
+                alpha = 0.3
+                modify_texture = {
+                    using = simple_frame_mask
+                }
+            }
+            background = {
+                using = frame_decorative_light_bg
+            }
+
+            video_icon = {
+                parentanchor = center
+                size = { 356 356 }
+                video = "gfx/interface/gacha/gacha_rotation.bik"
+                alwaystransparent = yes
+                loop = yes
+            }
+        }
+        widget = {
+            name = "gacha_pull_button"
+            parentanchor = center
+            size = { 362 450 }
+            icon = {
+                size = { 150 75 }
+                texture = "gfx/interface/icons/gui_icons/gacha_pull_button.dds"
+                parentanchor = center
+                background = {
+                    margin = { 10 10 }
+                    using = entry_bg_fancy_dark
+                }
+            }
+            state = {
+                name = gacha_pull_button_hover
+                scale = 1.1
+            }
+            state = {
+                name = gacha_pull_button_normal
+                scale = 1
+            }
+        }
+    }
+
+}
+
+template gacha_rotate_glow_animation {
+    texture = "gfx/interface/animation/rotate_glow2.dds"
+    alwaystransparent = yes
+    ignore_in_debug_draw = yes
+
+    modify_texture = {
+        name = mask_left
+        texture = "gfx/interface/animation/rotate_glow_mask.dds"
+        blend_mode = alphamultiply
+    }
+    modify_texture = {
+        name = mask_right
+        texture = "gfx/interface/animation/rotate_glow_mask2.dds"
+        blend_mode = alphamultiply
+    }
+    modify_texture = {
+        name = overlay_left
+        texture = "gfx/interface/animation/rotate_glow_overlay.dds"
+        blend_mode = colordodge
+        alpha = 0.3
+    }
+    modify_texture = {
+        name = overlay_right
+        texture = "gfx/interface/animation/rotate_glow_overlay.dds"
+        blend_mode = colordodge
+        alpha = 0.3
+    }
+
+    ### mask rotating left
+    state = {
+        trigger_on_create = yes
+        name = left
+        next = left2
+        duration = 0.0
+        modify_texture = {
+            name = mask_left
+            rotate_uv = 0
+        }
+    }
+    state = {
+        name = left2
+        next = left
+        duration = 20.0
+        modify_texture = {
+            name = mask_left
+            rotate_uv = 360
+        }
+    }
+
+    #### mask rotating right
+    state = {
+        trigger_on_create = yes
+        name = right
+        next = right2
+        duration = 0.0
+        modify_texture = {
+            name = mask_right
+            rotate_uv = 0
+        }
+    }
+    state = {
+        name = right2
+        next = right
+        duration = 30.0
+        modify_texture = {
+            name = mask_right
+            rotate_uv = -360
+        }
+    }
+
+    ### overlay rotating left
+    state = {
+        trigger_on_create = yes
+        name = overlay_left
+        next = overlay_left2
+        duration = 0.0
+        modify_texture = {
+            name = overlay_left
+            rotate_uv = 0
+        }
+    }
+    state = {
+        name = overlay_left2
+        next = overlay_left
+        duration = 15.0
+        modify_texture = {
+            name = overlay_left
+            rotate_uv = 360
+        }
+    }
+    ### overlay rotating right
+    state = {
+        trigger_on_create = yes
+        name = overlay_right
+        next = overlay_right2
+        duration = 0.0
+        modify_texture = {
+            name = overlay_right
+            rotate_uv = 0
+        }
+    }
+    state = {
+        name = overlay_right2
+        next = overlay_right
+        duration = 30.0
+        modify_texture = {
+            name = overlay_right
+            rotate_uv = -360
+        }
+    }
 }
