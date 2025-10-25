@@ -2,11 +2,24 @@
 on_monthly_pulse = {
     on_actions = {
         on_monthly_gacha_ui_check
+        on_create_gacha_types
     }
 }
 
 on_monthly_gacha_ui_check = {
     effect = {
         add_gacha_main_button = yes
+    }
+}
+
+on_game_started = {
+    on_actions = {
+        on_create_gacha_types
+    }
+}
+
+on_create_gacha_types = {
+    effect = {
+        create_gacha_types = yes
     }
 }

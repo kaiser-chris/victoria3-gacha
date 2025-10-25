@@ -1,0 +1,82 @@
+﻿sgui_gacha_pull = {
+    scope = country
+
+    effect = {
+        pull_gacha = {
+            scope = gacha_result
+        }
+        set_variable = {
+            name = gacha_result
+            value = scope:gacha_result
+        }
+        add_to_variable_list = {
+            name = gacha_library
+            target = scope:gacha_result
+        }
+    }
+}
+
+sgui_gacha_pull_result = {
+    scope = country
+
+    is_shown = {
+        has_variable = gacha_result
+    }
+
+    effect = {
+        apply_gacha_ball = {
+            ball = var:gacha_result
+        }
+        remove_variable = gacha_result
+    }
+}
+
+sgui_gacha_pull_common = {
+    scope = country
+
+    is_shown = {
+        var:gacha_result ?= {
+            var:gacha_rarity ?= gacha_rarity_common
+        }
+    }
+}
+
+sgui_gacha_pull_uncommon = {
+    scope = country
+
+    is_shown = {
+        var:gacha_result ?= {
+            var:gacha_rarity ?= gacha_rarity_uncommon
+        }
+    }
+}
+
+sgui_gacha_pull_rare = {
+    scope = country
+
+    is_shown = {
+        var:gacha_result ?= {
+            var:gacha_rarity ?= gacha_rarity_rare
+        }
+    }
+}
+
+sgui_gacha_pull_epic = {
+    scope = country
+
+    is_shown = {
+        var:gacha_result ?= {
+            var:gacha_rarity ?= gacha_rarity_epic
+        }
+    }
+}
+
+sgui_gacha_pull_legendary = {
+    scope = country
+
+    is_shown = {
+        var:gacha_result ?= {
+            var:gacha_rarity ?= gacha_rarity_legendary
+        }
+    }
+}

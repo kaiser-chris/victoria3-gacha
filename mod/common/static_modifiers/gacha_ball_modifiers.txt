@@ -1,0 +1,9 @@
+﻿gacha_ball_modifier_industry = {
+	icon = "gfx/interface/icons/ig_icons/industrialists.dds"
+	state_capitalists_investment_pool_efficiency_mult = 0.05
+}
+
+gacha_ball_modifier_environment = {
+    icon = "gfx/interface/icons/ig_icons/rural_folk.dds"
+    state_pollution_reduction_health_mult = -0.05
+}

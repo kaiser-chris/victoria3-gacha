@@ -1,2 +1,2 @@
 ﻿gui/gacha_panel_structure.gui = gacha_panel_structure
-gui/gacha_popups.gui = gacha_popups
+gui/gacha_popup_structure.gui = gacha_popup_structure

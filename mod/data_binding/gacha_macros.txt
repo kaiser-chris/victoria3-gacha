@@ -1,0 +1,5 @@
+﻿macro = {
+    description = "IsGachaType"
+    definition = "IsGachaType(Name)"
+    replace_with = "EqualTo_CFixedPoint(Scope.Var('gacha_type_id').GetValue, Scope.ScriptValue(Name))"
+}

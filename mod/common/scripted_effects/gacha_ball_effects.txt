@@ -1,0 +1,101 @@
+﻿create_gacha_ball = {
+    create_struct = {
+        struct_type = gacha_struct_ball
+        struct_scope = $scope$
+    }
+    get_gacha_type = {
+        scope = temporary_gacha_type
+        type = $type$
+    }
+    scope:$scope$ = {
+        set_variable = {
+            name = gacha_type
+            value = scope:temporary_gacha_type
+        }
+        set_variable = {
+            name = gacha_rarity
+            value = $rarity$
+        }
+    }
+}
+
+get_gacha_type = {
+    every_in_global_list = {
+        variable = gacha_types
+        limit = {
+            var:gacha_type_id ?= $type$
+        }
+        save_scope_as = $scope$
+    }
+}
+
+create_gacha_types = {
+    create_gacha_type = {
+        type = gacha_type_environment
+        name = gacha_ball_modifier_environment
+    }
+    create_gacha_type = {
+        type = gacha_type_industry
+        name = gacha_ball_modifier_industry
+    }
+}
+
+create_gacha_type = {
+    c:GBR = {
+        if = {
+            limit = {
+                NOT = {
+                    any_in_global_list = {
+                        variable = gacha_types
+                        var:gacha_type_id ?= $type$
+                    }
+                }
+            }
+            create_struct = {
+                struct_type = gacha_struct_type
+                struct_scope = temporary_gacha_type
+            }
+            scope:temporary_gacha_type = {
+                set_variable = {
+                    name = gacha_type_id
+                    value = $type$
+                }
+                set_variable = {
+                    name = gacha_type_name
+                    value = flag:$name$
+                }
+                fix_variable_error = { variable = $name$ }
+            }
+            add_to_global_variable_list = {
+                name = gacha_types
+                target = scope:temporary_gacha_type
+            }
+        }
+    }
+}
+
+apply_gacha_ball = {
+    switch = {
+        trigger = $ball$.var:gacha_type.var:gacha_type_id
+        gacha_type_industry = {
+            add_modifier = {
+                name = gacha_ball_modifier_industry
+                multiplier = $ball$.var:gacha_rarity
+            }
+        }
+        gacha_type_environment = {
+            add_modifier = {
+                name = gacha_ball_modifier_environment
+                multiplier = $ball$.var:gacha_rarity
+            }
+        }
+    }
+}
+
+pull_gacha = {
+    create_gacha_ball = {
+        scope = $scope$
+        type = gacha_random_type
+        rarity = gacha_random_rarity
+    }
+}
