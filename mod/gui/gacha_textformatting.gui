@@ -1,0 +1,22 @@
+textformatting = {
+    format = {
+        name = gacha_common
+        format = "bold"
+    }
+    format = {
+        name = gacha_uncommon
+        format = "bold;color:{ 0.41, 0.70, 0.47 }"
+    }
+    format = {
+        name = gacha_rare
+        format = "bold;color:{ 0.41, 0.67, 0.94 }"
+    }
+    format = {
+        name = gacha_epic
+        format = "bold;color:{ 0.90, 0.30, 0.60 }"
+    }
+    format = {
+        name = gacha_legendary
+        format = "bold;color:{ 0.8, 0.4, 0.1 }"
+    }
+}

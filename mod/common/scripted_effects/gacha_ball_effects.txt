@@ -16,6 +16,7 @@
             name = gacha_rarity
             value = $rarity$
         }
+
     }
 }
 

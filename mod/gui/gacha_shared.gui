@@ -64,6 +64,35 @@ types gacha_popups {
         }
     }
 
+    type gacha_rarity_text = vbox {
+        layoutpolicy_horizontal = expanding
+        textbox = {
+            block "rarity_text_attributes" {}
+            visible = "[IsGachaRarity('gacha_rarity_common')]"
+            text = gacha_rarity_common
+        }
+        textbox = {
+            block "rarity_text_attributes" {}
+            visible = "[IsGachaRarity('gacha_rarity_uncommon')]"
+            text = gacha_rarity_uncommon
+        }
+        textbox = {
+            block "rarity_text_attributes" {}
+            visible = "[IsGachaRarity('gacha_rarity_rare')]"
+            text = gacha_rarity_rare
+        }
+        textbox = {
+            block "rarity_text_attributes" {}
+            visible = "[IsGachaRarity('gacha_rarity_epic')]"
+            text = gacha_rarity_epic
+        }
+        textbox = {
+            block "rarity_text_attributes" {}
+            visible = "[IsGachaRarity('gacha_rarity_legendary')]"
+            text = gacha_rarity_legendary
+        }
+    }
+
 }
 
 template gacha_rotate_glow_animation {

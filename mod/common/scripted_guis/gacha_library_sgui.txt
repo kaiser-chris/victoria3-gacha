@@ -1,0 +1,27 @@
+﻿sgui_gacha_select = {
+    scope = Country
+
+    saved_scopes = {
+        gacha_item
+    }
+
+    is_shown = {
+        var:gacha_selected ?= scope:gacha_item
+    }
+
+    effect = {
+        if = {
+            limit = {
+                var:gacha_selected ?= scope:gacha_item
+            }
+            remove_variable = gacha_selected
+        }
+        else = {
+            set_variable = {
+                name = gacha_selected
+                value = scope:gacha_item
+            }
+        }
+    }
+
+}

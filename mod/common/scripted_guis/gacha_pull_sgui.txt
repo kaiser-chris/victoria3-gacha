@@ -13,6 +13,39 @@
             name = gacha_library
             target = scope:gacha_result
         }
+        switch = {
+            trigger = scope:gacha_result.var:gacha_rarity
+            gacha_rarity_common = {
+                add_to_variable_list = {
+                    name = gacha_library_common
+                    target = scope:gacha_result
+                }
+            }
+            gacha_rarity_uncommon = {
+                add_to_variable_list = {
+                    name = gacha_library_uncommon
+                    target = scope:gacha_result
+                }
+            }
+            gacha_rarity_rare = {
+                add_to_variable_list = {
+                    name = gacha_library_rare
+                    target = scope:gacha_result
+                }
+            }
+            gacha_rarity_epic = {
+                add_to_variable_list = {
+                    name = gacha_library_epic
+                    target = scope:gacha_result
+                }
+            }
+            gacha_rarity_legendary = {
+                add_to_variable_list = {
+                    name = gacha_library_legendary
+                    target = scope:gacha_result
+                }
+            }
+        }
     }
 }
 
