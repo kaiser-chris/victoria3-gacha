@@ -120,14 +120,287 @@ types gacha_base_panel_types {
         margin = { 20 20 }
         spacing = 20
         visible = "[GetVariableSystem.HasValue('gacha_panel_tab', 'main')]"
+
+        button = {
+            using = default_button
+            onclick = "[GetVariableSystem.Set('com_open_window', 'gacha_pull_popup')]"
+        }
     }
 
     type gacha_base_panel_library = hbox {
         layoutpolicy_vertical = expanding
         layoutpolicy_horizontal = expanding
         margin = { 20 20 }
-        spacing = 20
         visible = "[GetVariableSystem.HasValue('gacha_panel_tab', 'library')]"
+
+        vbox = {
+            layoutpolicy_vertical = expanding
+            layoutpolicy_horizontal = expanding
+            spacing = 20
+
+            gacha_library_group = {
+                blockoverride "expand_onclick" {
+                    onclick = "[GetVariableSystem.Toggle('gacha_group_common')]"
+                }
+                blockoverride "expand_active" {
+                    visible = "[GetVariableSystem.Exists('gacha_group_common')]"
+                }
+                blockoverride "expand_hidden" {
+                    visible = "[Not(GetVariableSystem.Exists('gacha_group_common'))]"
+                }
+                blockoverride "group_name" {
+                    text = concept_gacha_commons
+                }
+                blockoverride "group_count" {
+                    raw_text = "[Country.MakeScope.ScriptValue('gacha_rarity_common_count')]"
+                }
+                blockoverride "group_filled" {
+                    visible = "[HasGachaRarityItems('gacha_rarity_common_count')]"
+                }
+                blockoverride "group_empty" {
+                    visible = "[Not(HasGachaRarityItems('gacha_rarity_common_count'))]"
+                }
+                blockoverride "item_visibility" {
+                    visible = "[IsGachaRarity('gacha_rarity_common')]"
+                }
+            }
+
+            gacha_library_group = {
+                blockoverride "expand_onclick" {
+                    onclick = "[GetVariableSystem.Toggle('gacha_group_uncommon')]"
+                }
+                blockoverride "expand_active" {
+                    visible = "[GetVariableSystem.Exists('gacha_group_uncommon')]"
+                }
+                blockoverride "expand_hidden" {
+                    visible = "[Not(GetVariableSystem.Exists('gacha_group_uncommon'))]"
+                }
+                blockoverride "group_name" {
+                    text = concept_gacha_uncommons
+                }
+                blockoverride "group_count" {
+                    raw_text = "[Country.MakeScope.ScriptValue('gacha_rarity_uncommon_count')]"
+                }
+                blockoverride "group_filled" {
+                    visible = "[HasGachaRarityItems('gacha_rarity_uncommon_count')]"
+                }
+                blockoverride "group_empty" {
+                    visible = "[Not(HasGachaRarityItems('gacha_rarity_uncommon_count'))]"
+                }
+                blockoverride "item_visibility" {
+                    visible = "[IsGachaRarity('gacha_rarity_uncommon')]"
+                }
+            }
+
+            gacha_library_group = {
+                blockoverride "expand_onclick" {
+                    onclick = "[GetVariableSystem.Toggle('gacha_group_rare')]"
+                }
+                blockoverride "expand_active" {
+                    visible = "[GetVariableSystem.Exists('gacha_group_rare')]"
+                }
+                blockoverride "expand_hidden" {
+                    visible = "[Not(GetVariableSystem.Exists('gacha_group_rare'))]"
+                }
+                blockoverride "group_name" {
+                    text = concept_gacha_rares
+                }
+                blockoverride "group_count" {
+                    raw_text = "[Country.MakeScope.ScriptValue('gacha_rarity_rare_count')]"
+                }
+                blockoverride "group_filled" {
+                    visible = "[HasGachaRarityItems('gacha_rarity_rare_count')]"
+                }
+                blockoverride "group_empty" {
+                    visible = "[Not(HasGachaRarityItems('gacha_rarity_rare_count'))]"
+                }
+                blockoverride "item_visibility" {
+                    visible = "[IsGachaRarity('gacha_rarity_rare')]"
+                }
+            }
+
+            gacha_library_group = {
+                blockoverride "expand_onclick" {
+                    onclick = "[GetVariableSystem.Toggle('gacha_group_epic')]"
+                }
+                blockoverride "expand_active" {
+                    visible = "[GetVariableSystem.Exists('gacha_group_epic')]"
+                }
+                blockoverride "expand_hidden" {
+                    visible = "[Not(GetVariableSystem.Exists('gacha_group_epic'))]"
+                }
+                blockoverride "group_name" {
+                    text = concept_gacha_epics
+                }
+                blockoverride "group_count" {
+                    raw_text = "[Country.MakeScope.ScriptValue('gacha_rarity_epic_count')]"
+                }
+                blockoverride "group_filled" {
+                    visible = "[HasGachaRarityItems('gacha_rarity_epic_count')]"
+                }
+                blockoverride "group_empty" {
+                    visible = "[Not(HasGachaRarityItems('gacha_rarity_epic_count'))]"
+                }
+                blockoverride "item_visibility" {
+                    visible = "[IsGachaRarity('gacha_rarity_epic')]"
+                }
+            }
+
+            gacha_library_group = {
+                blockoverride "expand_onclick" {
+                    onclick = "[GetVariableSystem.Toggle('gacha_group_legendary')]"
+                }
+                blockoverride "expand_active" {
+                    visible = "[GetVariableSystem.Exists('gacha_group_legendary')]"
+                }
+                blockoverride "expand_hidden" {
+                    visible = "[Not(GetVariableSystem.Exists('gacha_group_legendary'))]"
+                }
+                blockoverride "group_name" {
+                    text = concept_gacha_legendarys
+                }
+                blockoverride "group_count" {
+                    raw_text = "[Country.MakeScope.ScriptValue('gacha_rarity_legendary_count')]"
+                }
+                blockoverride "group_filled" {
+                    visible = "[HasGachaRarityItems('gacha_rarity_legendary_count')]"
+                }
+                blockoverride "group_empty" {
+                    visible = "[Not(HasGachaRarityItems('gacha_rarity_legendary_count'))]"
+                }
+                blockoverride "item_visibility" {
+                    visible = "[IsGachaRarity('gacha_rarity_legendary')]"
+                }
+            }
+
+            expand = {}
+        }
+    }
+
+    type gacha_library_group = vbox {
+        layoutpolicy_horizontal = expanding
+        spacing = 20
+
+        button = {
+            layoutpolicy_horizontal = expanding
+            size = { -1 44 }
+
+            using = ui_increment
+            using = expand_button_bg_left_fade
+
+            block "expand_onclick" {
+                onclick = "[GetVariableSystem.Toggle('hidden_group')]"
+            }
+
+            textbox = {
+                margin_left = 35
+
+                align = nobaseline
+                autoresize = yes
+                elide = right
+                parentanchor = vcenter
+                fontsize_min = 14
+                default_format = "#header"
+
+                block "tooltip" {}
+                block "group_name" {
+                    raw_text = "#r group_name#!"
+                }
+            }
+
+            container = {
+                name = "expand_buttons"
+                parentanchor = vcenter
+
+                button = {
+                    using = ui_increment
+
+                    using = expand_arrow
+                    position = { 7 0 }
+                    size = { 18 18 }
+                    tooltip = "EXPAND"
+                    using = tooltip_above
+                    block "expand_onclick" {
+                        onclick = "[GetVariableSystem.Toggle('hidden_group')]"
+                    }
+                    block "expand_hidden" {
+                        visible = no
+                    }
+                }
+
+                button = {
+                    using = ui_decrement
+                    using = expand_arrow_expanded
+                    position = { 7 0 }
+                    size = { 18 18 }
+                    tooltip = "COLLAPSE"
+
+                    block "expand_onclick" {
+                        onclick = "[GetVariableSystem.Toggle('hidden_group')]"
+                    }
+                    block "expand_active" {
+                        visible = yes
+                    }
+                }
+            }
+
+            flowcontainer = {
+                parentanchor = right|vcenter
+                margin_right = 20
+                spacing = 5
+
+                icon = {
+                    size = { 20 20 }
+                    texture = "gfx/interface/gacha/balls/gacha_ball_gold.dds"
+                    parentanchor = vcenter
+                }
+                textbox = {
+                    align = nobaseline
+                    autoresize = yes
+                    elide = right
+                    fontsize_min = 14
+                    default_format = "#header"
+                    block "group_count" {
+                        raw_text = "#r group_count#!"
+                    }
+                }
+            }
+
+        }
+
+        vbox = {
+            block "expand_active" {
+                visible = yes
+            }
+
+            dynamicgridbox = {
+                block "group_filled" {
+                    visible = yes
+                }
+                datamodel = "[Country.MakeScope.GetList('gacha_library')]"
+                datamodel_wrap = 5
+                flipdirection = yes
+
+                item = {
+                    flowcontainer = {
+                        scale = 0.8
+                        gacha_ball = {
+                            block "item_visibility" {
+                                visible = no
+                            }
+                            blockoverride "glow" {}
+                        }
+                    }
+                }
+            }
+            textbox = {
+                minimumsize = { 300 100 }
+                block "group_empty" {
+                    visible = yes
+                }
+                raw_text = "Empty"
+            }
+        }
     }
 
 }

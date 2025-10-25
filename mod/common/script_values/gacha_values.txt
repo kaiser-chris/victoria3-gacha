@@ -45,6 +45,61 @@ gacha_random_rarity = {
     }
 }
 
+gacha_rarity_common_count = {
+    value = 0
+    every_in_list = {
+        variable = gacha_library
+        limit = {
+            var:gacha_rarity ?= gacha_rarity_common
+        }
+        add = 1
+    }
+}
+
+gacha_rarity_uncommon_count = {
+    value = 0
+    every_in_list = {
+        variable = gacha_library
+        limit = {
+            var:gacha_rarity ?= gacha_rarity_uncommon
+        }
+        add = 1
+    }
+}
+
+gacha_rarity_rare_count = {
+    value = 0
+    every_in_list = {
+        variable = gacha_library
+        limit = {
+            var:gacha_rarity ?= gacha_rarity_rare
+        }
+        add = 1
+    }
+}
+
+gacha_rarity_epic_count = {
+    value = 0
+    every_in_list = {
+        variable = gacha_library
+        limit = {
+            var:gacha_rarity ?= gacha_rarity_epic
+        }
+        add = 1
+    }
+}
+
+gacha_rarity_legendary_count = {
+    value = 0
+    every_in_list = {
+        variable = gacha_library
+        limit = {
+            var:gacha_rarity ?= gacha_rarity_legendary
+        }
+        add = 1
+    }
+}
+
 # Gacha Buff Types
 gacha_type_industry = 1
 gacha_type_environment = 2

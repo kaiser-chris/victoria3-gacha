@@ -1,0 +1,179 @@
+types gacha_popups {
+
+    type gacha_ball = widget {
+        block "gacha_context" {}
+        size = { 256 256 }
+
+        gacha_ball_open = {
+            blockoverride "gacha_visibility" {
+                visible = "[IsGachaRarity('gacha_rarity_common')]"
+            }
+            blockoverride "color_texture" {
+                texture = "gfx/interface/gacha/balls/gacha_ball_gold.dds"
+            }
+        }
+        gacha_ball_open = {
+            blockoverride "gacha_visibility" {
+                visible = "[IsGachaRarity('gacha_rarity_uncommon')]"
+            }
+            blockoverride "color_texture" {
+                texture = "gfx/interface/gacha/balls/gacha_ball_green.dds"
+            }
+        }
+        gacha_ball_open = {
+            blockoverride "gacha_visibility" {
+                visible = "[IsGachaRarity('gacha_rarity_rare')]"
+            }
+            blockoverride "color_texture" {
+                texture = "gfx/interface/gacha/balls/gacha_ball_blue.dds"
+            }
+        }
+        gacha_ball_open = {
+            blockoverride "gacha_visibility" {
+                visible = "[IsGachaRarity('gacha_rarity_epic')]"
+            }
+            blockoverride "color_texture" {
+                texture = "gfx/interface/gacha/balls/gacha_ball_purple.dds"
+            }
+        }
+        gacha_ball_open = {
+            blockoverride "gacha_visibility" {
+                visible = "[IsGachaRarity('gacha_rarity_legendary')]"
+            }
+            blockoverride "color_texture" {
+                texture = "gfx/interface/gacha/balls/gacha_ball_red.dds"
+            }
+        }
+
+        gacha_type_icon = {}
+    }
+
+    type gacha_ball_open = icon {
+        block "gacha_visibility" {
+            visible = no
+        }
+        block "color_texture" {
+            texture = "gfx/interface/gacha/balls/gacha_ball_gold.dds"
+        }
+        size = { 256 256 }
+        block "glow" {
+            background = {
+                margin = { 40 30 }
+                using = gacha_rotate_glow_animation
+            }
+        }
+    }
+
+}
+
+template gacha_rotate_glow_animation {
+    texture = "gfx/interface/animation/rotate_glow2.dds"
+    alwaystransparent = yes
+    ignore_in_debug_draw = yes
+
+    modify_texture = {
+        name = mask_left
+        texture = "gfx/interface/animation/rotate_glow_mask.dds"
+        blend_mode = alphamultiply
+    }
+    modify_texture = {
+        name = mask_right
+        texture = "gfx/interface/animation/rotate_glow_mask2.dds"
+        blend_mode = alphamultiply
+    }
+    modify_texture = {
+        name = overlay_left
+        texture = "gfx/interface/animation/rotate_glow_overlay.dds"
+        blend_mode = colordodge
+        alpha = 0.3
+    }
+    modify_texture = {
+        name = overlay_right
+        texture = "gfx/interface/animation/rotate_glow_overlay.dds"
+        blend_mode = colordodge
+        alpha = 0.3
+    }
+
+    ### mask rotating left
+    state = {
+        trigger_on_create = yes
+        name = left
+        next = left2
+        duration = 0.0
+        modify_texture = {
+            name = mask_left
+            rotate_uv = 0
+        }
+    }
+    state = {
+        name = left2
+        next = left
+        duration = 20.0
+        modify_texture = {
+            name = mask_left
+            rotate_uv = 360
+        }
+    }
+
+    #### mask rotating right
+    state = {
+        trigger_on_create = yes
+        name = right
+        next = right2
+        duration = 0.0
+        modify_texture = {
+            name = mask_right
+            rotate_uv = 0
+        }
+    }
+    state = {
+        name = right2
+        next = right
+        duration = 30.0
+        modify_texture = {
+            name = mask_right
+            rotate_uv = -360
+        }
+    }
+
+    ### overlay rotating left
+    state = {
+        trigger_on_create = yes
+        name = overlay_left
+        next = overlay_left2
+        duration = 0.0
+        modify_texture = {
+            name = overlay_left
+            rotate_uv = 0
+        }
+    }
+    state = {
+        name = overlay_left2
+        next = overlay_left
+        duration = 15.0
+        modify_texture = {
+            name = overlay_left
+            rotate_uv = 360
+        }
+    }
+    ### overlay rotating right
+    state = {
+        trigger_on_create = yes
+        name = overlay_right
+        next = overlay_right2
+        duration = 0.0
+        modify_texture = {
+            name = overlay_right
+            rotate_uv = 0
+        }
+    }
+    state = {
+        name = overlay_right2
+        next = overlay_right
+        duration = 30.0
+        modify_texture = {
+            name = overlay_right
+            rotate_uv = -360
+        }
+    }
+}

@@ -1,14 +1,29 @@
-template gacha_type_icon {
-    gacha_ball_type_icon = {
-        visible = "[IsGachaType('gacha_type_environment')]"
-        blockoverride "color_texture" {
-            texture = "gfx/interface/icons/ig_icons/rural_folk.dds"
+types gacha_type_icons {
+    type gacha_type_icon = widget {
+        parentanchor = center
+        size = { 180 180 }
+        gacha_ball_type_icon = {
+            visible = "[IsGachaType('gacha_type_environment')]"
+            blockoverride "color_texture" {
+                texture = "gfx/interface/icons/ig_icons/rural_folk.dds"
+            }
+        }
+        gacha_ball_type_icon = {
+            visible = "[IsGachaType('gacha_type_industry')]"
+            blockoverride "color_texture" {
+                texture = "gfx/interface/icons/ig_icons/industrialists.dds"
+            }
         }
     }
-    gacha_ball_type_icon = {
-        visible = "[IsGachaType('gacha_type_industry')]"
-        blockoverride "color_texture" {
-            texture = "gfx/interface/icons/ig_icons/industrialists.dds"
+
+    type gacha_ball_type_icon = widget {
+        size = { 180 180 }
+        icon = {
+            size = { 180 180 }
+            block "color_texture" {
+                texture = "gfx/interface/icons/generic_icons/green_checkmark.dds"
+            }
+            using = shimmer
         }
     }
 }

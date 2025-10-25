@@ -1,5 +1,17 @@
 ﻿macro = {
     description = "IsGachaType"
     definition = "IsGachaType(Name)"
-    replace_with = "EqualTo_CFixedPoint(Scope.Var('gacha_type_id').GetValue, Scope.ScriptValue(Name))"
+    replace_with = "EqualTo_CFixedPoint(Scope.Var('gacha_type').Var('gacha_type_id').GetValue, Scope.ScriptValue(Name))"
+}
+
+macro = {
+    description = "IsGachaRarity"
+    definition = "IsGachaRarity(Rarity)"
+    replace_with = "EqualTo_CFixedPoint(Scope.Var('gacha_rarity').GetValue, Scope.ScriptValue(Rarity))"
+}
+
+macro = {
+    description = "HasGachaRarityItems"
+    definition = "HasGachaRarityItems(Rarity)"
+    replace_with = "GreaterThan_CFixedPoint(Country.MakeScope.ScriptValue(Rarity), '(CFixedPoint)0')"
 }

@@ -1,3 +1,14 @@
 ﻿l_english:
  dlc_gacha: "Gacha!"
  dlc_gacha_desc: "Gacha in Victoria 3."
+# Rarities
+ concept_gacha_common: "Common Boon"
+ concept_gacha_commons: "Common Boons"
+ concept_gacha_uncommon: "Uncommon Boon"
+ concept_gacha_uncommons: "Uncommon Boons"
+ concept_gacha_rare: "Rare Boon"
+ concept_gacha_rares: "Rare Boons"
+ concept_gacha_epic: "Epic Boon"
+ concept_gacha_epics: "Epic Boons"
+ concept_gacha_legendary: "Legendary Boon"
+ concept_gacha_legendarys: "Legendary Boons"
