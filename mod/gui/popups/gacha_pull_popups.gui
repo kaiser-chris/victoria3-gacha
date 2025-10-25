@@ -139,68 +139,64 @@ types gacha_popups {
         }
 
         widget = {
-            position = { 100 180 }
             parentanchor = top|left
-            size = { 256 256 }
+            size = { 456 500 }
 
-            gacha_ball_open = {
-                blockoverride "result_context" {
-                    datacontext = "[GetScriptedGui('sgui_gacha_pull_common')]"
-                }
-                blockoverride "color_texture" {
-                    texture = "gfx/interface/gacha/balls/gacha_ball_gold.dds"
-                }
-            }
-            gacha_ball_open = {
-                blockoverride "result_context" {
-                    datacontext = "[GetScriptedGui('sgui_gacha_pull_uncommon')]"
-                }
-                blockoverride "color_texture" {
-                    texture = "gfx/interface/gacha/balls/gacha_ball_green.dds"
-                }
-            }
-            gacha_ball_open = {
-                blockoverride "result_context" {
-                    datacontext = "[GetScriptedGui('sgui_gacha_pull_rare')]"
-                }
-                blockoverride "color_texture" {
-                    texture = "gfx/interface/gacha/balls/gacha_ball_blue.dds"
-                }
-            }
-            gacha_ball_open = {
-                blockoverride "result_context" {
-                    datacontext = "[GetScriptedGui('sgui_gacha_pull_epic')]"
-                }
-                blockoverride "color_texture" {
-                    texture = "gfx/interface/gacha/balls/gacha_ball_purple.dds"
-                }
-            }
-            gacha_ball_open = {
-                blockoverride "result_context" {
-                    datacontext = "[GetScriptedGui('sgui_gacha_pull_legendary')]"
-                }
-                blockoverride "color_texture" {
-                    texture = "gfx/interface/gacha/balls/gacha_ball_red.dds"
+            widget = {
+                datacontext = "[Country.MakeScope.Var('gacha_result').Var('gacha_type')]"
+                parentanchor = top|left
+                size = { 100% 256 }
+                textbox = {
+                    text = "[Scope.Var('gacha_type_name').GetFlagName]"
+                    autoresize = yes
+                    multiline = yes
+                    margin = { 20 10 }
+                    parentanchor = center
+                    background = {
+                        using = entry_bg_fancy_dark
+                    }
+                    default_format = "#header"
+                    using = fontsize_large
                 }
             }
 
-            gacha_ball_modifier = {
-                visible = "[IsGachaType('gacha_type_environment')]"
-                blockoverride "color_texture" {
-                    texture = "gfx/interface/icons/ig_icons/rural_folk.dds"
-                }
+            widget = {
+                position = { 100 160 }
+                parentanchor = top|left
+                size = { 256 256 }
+
+                using = gacha_ball
+
+                using = gacha_type_icon
             }
-            gacha_ball_modifier = {
-                visible = "[IsGachaType('gacha_type_industry')]"
-                blockoverride "color_texture" {
-                    texture = "gfx/interface/icons/ig_icons/industrialists.dds"
+
+            widget = {
+                datacontext = "[Country.MakeScope.Var('gacha_result').Var('gacha_type')]"
+                parentanchor = bottom|left
+                size = { 100% 50 }
+                flowcontainer = {
+                    parentanchor = center
+                    spacing = 20
+                    button = {
+                        size = { 150 40 }
+                        using = default_button_action
+                        text = gacha_pull_result_library
+                        # TODO: Add open library onclick
+                        onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
+                    }
+                    button = {
+                        size = { 150 40 }
+                        using = default_button_action
+                        text = gacha_pull_result_close
+                        onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
+                    }
                 }
             }
         }
         icon = {
             position = { -30 -10 }
             parentanchor = bottom|right
-            size = { 300 396 }
+            size = { 300 480 }
             texture = "gfx/interface/gacha/victoria.dds"
         }
 
@@ -212,7 +208,6 @@ types gacha_popups {
             parentanchor = top|right
             size = { 42 42 }
             position = { -5 13 }
-            onclick = "[GetVariableSystem.Clear('com_open_window')]"
             onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
             input_action = "back"
             shortcut = "close_window"
@@ -241,12 +236,11 @@ types gacha_popups {
         }
     }
 
-    type gacha_ball_modifier = widget {
+    type gacha_ball_type_icon = widget {
         datacontext = "[Country.MakeScope.Var('gacha_result').Var('gacha_type')]"
         parentanchor = center
         size = { 180 180 }
         icon = {
-            tooltip = "[Scope.Var('gacha_type_name').GetFlagName]"
             size = { 180 180 }
             block "color_texture" {
                 texture = "gfx/interface/icons/generic_icons/green_checkmark.dds"
@@ -309,6 +303,49 @@ types gacha_popups {
         }
     }
 
+}
+
+template gacha_ball {
+    gacha_ball_open = {
+        blockoverride "result_context" {
+            datacontext = "[GetScriptedGui('sgui_gacha_pull_common')]"
+        }
+        blockoverride "color_texture" {
+            texture = "gfx/interface/gacha/balls/gacha_ball_gold.dds"
+        }
+    }
+    gacha_ball_open = {
+        blockoverride "result_context" {
+            datacontext = "[GetScriptedGui('sgui_gacha_pull_uncommon')]"
+        }
+        blockoverride "color_texture" {
+            texture = "gfx/interface/gacha/balls/gacha_ball_green.dds"
+        }
+    }
+    gacha_ball_open = {
+        blockoverride "result_context" {
+            datacontext = "[GetScriptedGui('sgui_gacha_pull_rare')]"
+        }
+        blockoverride "color_texture" {
+            texture = "gfx/interface/gacha/balls/gacha_ball_blue.dds"
+        }
+    }
+    gacha_ball_open = {
+        blockoverride "result_context" {
+            datacontext = "[GetScriptedGui('sgui_gacha_pull_epic')]"
+        }
+        blockoverride "color_texture" {
+            texture = "gfx/interface/gacha/balls/gacha_ball_purple.dds"
+        }
+    }
+    gacha_ball_open = {
+        blockoverride "result_context" {
+            datacontext = "[GetScriptedGui('sgui_gacha_pull_legendary')]"
+        }
+        blockoverride "color_texture" {
+            texture = "gfx/interface/gacha/balls/gacha_ball_red.dds"
+        }
+    }
 }
 
 template gacha_rotate_glow_animation {

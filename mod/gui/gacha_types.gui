@@ -1,0 +1,14 @@
+template gacha_type_icon {
+    gacha_ball_type_icon = {
+        visible = "[IsGachaType('gacha_type_environment')]"
+        blockoverride "color_texture" {
+            texture = "gfx/interface/icons/ig_icons/rural_folk.dds"
+        }
+    }
+    gacha_ball_type_icon = {
+        visible = "[IsGachaType('gacha_type_industry')]"
+        blockoverride "color_texture" {
+            texture = "gfx/interface/icons/ig_icons/industrialists.dds"
+        }
+    }
+}
