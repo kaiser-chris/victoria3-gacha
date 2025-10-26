@@ -2,7 +2,9 @@ types gacha_popups {
 
     type gacha_ball = widget {
         block "gacha_context" {}
-        size = { 256 256 }
+        block "gacha_size" {
+            size = { 256 256 }
+        }
 
         gacha_ball_open = {
             blockoverride "gacha_visibility" {
@@ -55,9 +57,12 @@ types gacha_popups {
         block "color_texture" {
             texture = "gfx/interface/gacha/balls/gacha_ball_gold.dds"
         }
-        size = { 256 256 }
+        size = { 100% 100% }
         block "glow" {
             background = {
+                block "glow_visibility" {
+                    visible = yes
+                }
                 margin = { 40 30 }
                 using = gacha_rotate_glow_animation
             }
@@ -90,6 +95,119 @@ types gacha_popups {
             block "rarity_text_attributes" {}
             visible = "[IsGachaRarity('gacha_rarity_legendary')]"
             text = gacha_rarity_legendary
+        }
+    }
+
+    type gacha_active = widget {
+        block "gacha_context" {}
+        block "gacha_size" {
+            size = { 256 256 }
+        }
+        icon = {
+            visible = "[Not(Scope.IsSet)]"
+            size = { 100% 100% }
+            texture = "gfx/interface/gacha/balls/gacha_ball_unknown.dds"
+        }
+        gacha_ball = {
+            visible = "[Scope.IsSet]"
+            blockoverride "gacha_size" {
+                size = { 100% 100% }
+            }
+        }
+    }
+
+    type gacha_active_button = button {
+        block "gacha_button_context" {
+            datacontext = "[GetScriptedGui('sgui_gacha_activate_one')]"
+        }
+        onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
+        block "gacha_button_additional_onclick" {}
+        block "gacha_size" {
+            size = { 256 256 }
+        }
+        gacha_active = {}
+    }
+
+
+    type gacha_popup_window = window {
+        using = clickthrough_blocker
+        filter_mouse = all
+        movable = yes
+        allow_outside = yes
+        parentanchor = center
+
+        block "popup_size" {
+            size = { 900 605 }
+        }
+
+        block "popup_visibility" {
+            visible = no
+        }
+
+        widget = {
+            size = { 100% 100% }
+
+            background = {
+                texture = "gfx/interface/backgrounds/popup_bg.dds"
+                spriteType = Corneredstretched
+                spriteborder = { 90 90 }
+                texture_density = 2
+
+                modify_texture = {
+                    texture = "gfx/interface/backgrounds/default_bg_shading.dds"
+                    spriteType = Corneredstretched
+                    spriteborder = { 0 0 }
+                    blend_mode = overlay
+                }
+                modify_texture = {
+                    using = texture_velvet
+                }
+            }
+        }
+
+        # Header
+        widget = {
+            size = { 100% 82 }
+
+            popup_top_header = {}
+
+            textbox = {
+                position = { 0 24 }
+                size = { 75% 40 }
+                block "popup_title" {
+                    raw_text = "#r popup_title#!"
+                }
+                elide = right
+                fontsize_min = 14
+                parentanchor = hcenter
+                align = hcenter|nobaseline
+                using = header_font
+                using = header_font_size
+                default_format = "#header"
+            }
+        }
+
+        block "popup_content" {}
+
+        # Frame
+        popup_bg_frame = {}
+
+        # Close button
+        button_icon_round = {
+            parentanchor = top|right
+            size = { 42 42 }
+            position = { -5 13 }
+
+            block "popup_button_onclick" {}
+            input_action = "back"
+            shortcut = "close_window"
+
+            blockoverride "icon" {
+                texture = "gfx/interface/buttons/button_icons/close.dds"
+            }
+            blockoverride "icon_size" {
+                size = { 100% 100% }
+            }
         }
     }
 

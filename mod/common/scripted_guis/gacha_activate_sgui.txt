@@ -1,0 +1,41 @@
+﻿sgui_gacha_activate = {
+    scope = country
+
+    is_shown = {
+        has_variable = gacha_selected
+    }
+
+    effect = {
+        remove_variable = gacha_selected
+    }
+}
+
+sgui_gacha_activate_one = {
+    scope = country
+
+    effect = {
+        activate_gacha_ball = {
+            slot = gacha_active_one
+        }
+    }
+}
+
+sgui_gacha_activate_two = {
+    scope = country
+
+    effect = {
+        activate_gacha_ball = {
+            slot = gacha_active_two
+        }
+    }
+}
+
+sgui_gacha_activate_three = {
+    scope = country
+
+    effect = {
+        activate_gacha_ball = {
+            slot = gacha_active_three
+        }
+    }
+}

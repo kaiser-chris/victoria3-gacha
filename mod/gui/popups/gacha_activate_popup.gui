@@ -1,0 +1,98 @@
+types gacha_popups {
+
+    type gacha_activate_popup = gacha_popup_window {
+        datacontext = "[GetScriptedGui('sgui_gacha_activate')]"
+        blockoverride "popup_size" {
+            size = { 800 550 }
+        }
+        blockoverride "popup_visibility" {
+            visible = "[And(
+                ScriptedGui.IsShown(GuiScope.SetRoot(Country.MakeScope).End),
+                GetVariableSystem.HasValue('com_open_window', 'gacha_activate_popup')
+            )]"
+        }
+        blockoverride "popup_title" {
+            text = gacha_activate_title
+        }
+        blockoverride "popup_content" {
+            vbox = {
+                layoutpolicy_vertical = expanding
+                layoutpolicy_horizontal = expanding
+                margin_top = 100
+                spacing = 20
+
+                textbox = {
+                    maximumsize = { 600 -1 }
+                    minimumsize = { 600 -1 }
+                    margin = { 20 20 }
+                    autoresize = yes
+                    multiline = yes
+                    align = center
+                    text = gacha_activate_description
+                }
+
+                hbox = {
+                    maximumsize = { 600 -1 }
+                    gacha_active_button = {
+                        # onclick = "[GetVariableSystem.Clear('com_open_window')]"
+                        # onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
+
+                        blockoverride "gacha_button_context" {
+                            datacontext = "[GetScriptedGui('sgui_gacha_activate_one')]"
+                        }
+                        blockoverride "gacha_context" {
+                            datacontext = "[Country.MakeScope.Var('gacha_active_one')]"
+                        }
+                        blockoverride "gacha_size" {
+                            size = { 200 200 }
+                        }
+                        blockoverride "glow_visibility" {
+                            visible = "[GetScriptedGui('sgui_gacha_activate_one').IsValid(GuiScope.SetRoot(Country.MakeScope).End)]"
+                        }
+                    }
+                    gacha_active_button = {
+                        # onclick = "[GetVariableSystem.Clear('com_open_window')]"
+                        # onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
+
+                        blockoverride "gacha_button_context" {
+                            datacontext = "[GetScriptedGui('sgui_gacha_activate_two')]"
+                        }
+                        blockoverride "gacha_context" {
+                            datacontext = "[Country.MakeScope.Var('gacha_active_two')]"
+                        }
+                        blockoverride "gacha_size" {
+                            size = { 200 200 }
+                        }
+                        blockoverride "glow_visibility" {
+                            visible = "[GetScriptedGui('sgui_gacha_activate_two').IsValid(GuiScope.SetRoot(Country.MakeScope).End)]"
+                        }
+                    }
+                    gacha_active_button = {
+                        # onclick = "[GetVariableSystem.Clear('com_open_window')]"
+                        # onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
+
+                        blockoverride "gacha_button_context" {
+                            datacontext = "[GetScriptedGui('sgui_gacha_activate_three')]"
+                        }
+                        blockoverride "gacha_context" {
+                            datacontext = "[Country.MakeScope.Var('gacha_active_three')]"
+                        }
+                        blockoverride "gacha_size" {
+                            size = { 200 200 }
+                        }
+                        blockoverride "glow_visibility" {
+                            visible = "[GetScriptedGui('sgui_gacha_activate_three').IsValid(GuiScope.SetRoot(Country.MakeScope).End)]"
+                        }
+                    }
+                }
+
+                expand = {}
+            }
+        }
+        blockoverride "popup_button_onclick" {
+            onclick = "[GetVariableSystem.Clear('com_open_window')]"
+            onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
+        }
+    }
+
+}

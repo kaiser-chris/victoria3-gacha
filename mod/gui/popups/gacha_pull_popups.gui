@@ -1,225 +1,108 @@
 types gacha_popups {
 
-    type gacha_pull_popup = window {
+    type gacha_pull_popup = gacha_popup_window {
         datacontext = "[GetScriptedGui('sgui_gacha_pull')]"
-        using = clickthrough_blocker
-        filter_mouse = all
-        movable = yes
-        allow_outside = yes
-        parentanchor = center
+        blockoverride "popup_size" {
+            size = { 450 600 }
+        }
+        blockoverride "popup_visibility" {
+            visible = "[GetVariableSystem.HasValue('com_open_window', 'gacha_pull_popup')]"
+        }
+        blockoverride "popup_title" {
+            text = gacha_pull_title
+        }
+        blockoverride "popup_content" {
+            vbox = {
+                layoutpolicy_vertical = expanding
+                layoutpolicy_horizontal = expanding
+                margin_top = 60
 
-        size = { 450 600 }
-
-        # TODO
-        visible = "[GetVariableSystem.HasValue('com_open_window', 'gacha_pull_popup')]"
-        #visible = "[Not(Country.MakeScope.Var('gacha_result').IsSet)]"
-
-        widget = {
-            size = { 100% 100% }
-
-            background = {
-                texture = "gfx/interface/backgrounds/popup_bg.dds"
-                spriteType = Corneredstretched
-                spriteborder = { 90 90 }
-                texture_density = 2
-
-                modify_texture = {
-                    texture = "gfx/interface/backgrounds/default_bg_shading.dds"
-                    spriteType = Corneredstretched
-                    spriteborder = { 0 0 }
-                    blend_mode = overlay
-                }
-                modify_texture = {
-                    using = texture_velvet
-                }
+                gacha_pull_button = {}
             }
         }
-
-        # Header
-        widget = {
-            size = { 100% 82 }
-
-            popup_top_header = {}
-
-            textbox = {
-                position = { 0 24 }
-                size = { 75% 40 }
-                text = gacha_pull_title
-                elide = right
-                fontsize_min = 14
-                parentanchor = hcenter
-                align = hcenter|nobaseline
-                using = header_font
-                using = header_font_size
-                default_format = "#header"
-            }
-        }
-
-        # Frame
-        popup_bg_frame = {}
-
-        vbox = {
-            layoutpolicy_vertical = expanding
-            layoutpolicy_horizontal = expanding
-            margin_top = 60
-
-            gacha_pull_button = {}
-        }
-
-        # Close button
-        button_icon_round = {
-            parentanchor = top|right
-            size = { 42 42 }
-            position = { -5 13 }
-
+        blockoverride "popup_button_onclick" {
             onclick = "[GetVariableSystem.Clear('com_open_window')]"
-            input_action = "back"
-            shortcut = "close_window"
-
-            blockoverride "icon" {
-                texture = "gfx/interface/buttons/button_icons/close.dds"
-            }
-            blockoverride "icon_size" {
-                size = { 100% 100% }
-            }
         }
     }
 
-    type gacha_pull_result_popup = window {
+    type gacha_pull_result_popup = gacha_popup_window {
         datacontext = "[GetScriptedGui('sgui_gacha_pull_result')]"
-        using = clickthrough_blocker
-        filter_mouse = all
-        movable = yes
-        allow_outside = yes
-        parentanchor = center
-
-        size = { 700 550 }
-
-        visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(Country.MakeScope).End)]"
-
-        widget = {
-            size = { 100% 100% }
-
-            background = {
-                texture = "gfx/interface/backgrounds/popup_bg.dds"
-                spriteType = Corneredstretched
-                spriteborder = { 90 90 }
-                texture_density = 2
-
-                modify_texture = {
-                    texture = "gfx/interface/backgrounds/default_bg_shading.dds"
-                    spriteType = Corneredstretched
-                    spriteborder = { 0 0 }
-                    blend_mode = overlay
-                }
-                modify_texture = {
-                    using = texture_velvet
-                }
-            }
+        blockoverride "popup_size" {
+            size = { 700 550 }
         }
-
-        # Header
-        widget = {
-            size = { 100% 82 }
-
-            popup_top_header = {}
-
-            textbox = {
-                position = { 0 24 }
-                size = { 75% 40 }
-                text = gacha_pull_result_title
-                elide = right
-                fontsize_min = 14
-                parentanchor = hcenter
-                align = hcenter|nobaseline
-                using = header_font
-                using = header_font_size
-                default_format = "#header"
-            }
+        blockoverride "popup_visibility" {
+            visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(Country.MakeScope).End)]"
         }
-
-        widget = {
-            parentanchor = top|left
-            size = { 456 500 }
-
+        blockoverride "popup_title" {
+            text = gacha_pull_result_title
+        }
+        blockoverride "popup_content" {
             widget = {
-                datacontext = "[Country.MakeScope.Var('gacha_result').Var('gacha_type')]"
                 parentanchor = top|left
-                size = { 100% 256 }
-                textbox = {
-                    text = "[Scope.Var('gacha_type_name').GetFlagName]"
-                    autoresize = yes
-                    multiline = yes
-                    margin = { 20 10 }
-                    parentanchor = center
-                    background = {
-                        using = entry_bg_fancy_dark
+                size = { 456 500 }
+
+                widget = {
+                    datacontext = "[Country.MakeScope.Var('gacha_result').Var('gacha_type')]"
+                    parentanchor = top|left
+                    size = { 100% 256 }
+                    textbox = {
+                        text = "[Scope.Var('gacha_type_name').GetFlagName]"
+                        autoresize = yes
+                        multiline = yes
+                        margin = { 20 10 }
+                        parentanchor = center
+                        background = {
+                            using = entry_bg_fancy_dark
+                        }
+                        default_format = "#header"
+                        using = fontsize_large
                     }
-                    default_format = "#header"
-                    using = fontsize_large
+                }
+
+                widget = {
+                    position = { 100 160 }
+                    parentanchor = top|left
+                    size = { 256 256 }
+
+                    gacha_ball = {
+                        blockoverride "gacha_context" {
+                            datacontext = "[Country.MakeScope.Var('gacha_result')]"
+                        }
+                    }
+                }
+
+                widget = {
+                    datacontext = "[Country.MakeScope.Var('gacha_result').Var('gacha_type')]"
+                    parentanchor = bottom|left
+                    size = { 100% 50 }
+                    flowcontainer = {
+                        parentanchor = center
+                        spacing = 20
+                        button = {
+                            size = { 150 40 }
+                            using = default_button_action
+                            text = gacha_pull_result_library
+                            onclick = "[GetVariableSystem.Set('com_open_window', 'gacha_button_main')]"
+                            onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
+                        }
+                        button = {
+                            size = { 150 40 }
+                            using = default_button_action
+                            text = gacha_pull_result_close
+                            onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
+                        }
+                    }
                 }
             }
-
-            widget = {
-                position = { 100 160 }
-                parentanchor = top|left
-                size = { 256 256 }
-
-                gacha_ball = {
-                    blockoverride "gacha_context" {
-                        datacontext = "[Country.MakeScope.Var('gacha_result')]"
-                    }
-                }
-            }
-
-            widget = {
-                datacontext = "[Country.MakeScope.Var('gacha_result').Var('gacha_type')]"
-                parentanchor = bottom|left
-                size = { 100% 50 }
-                flowcontainer = {
-                    parentanchor = center
-                    spacing = 20
-                    button = {
-                        size = { 150 40 }
-                        using = default_button_action
-                        text = gacha_pull_result_library
-                        onclick = "[GetVariableSystem.Set('com_open_window', 'gacha_button_main')]"
-                        onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
-                    }
-                    button = {
-                        size = { 150 40 }
-                        using = default_button_action
-                        text = gacha_pull_result_close
-                        onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
-                    }
-                }
+            icon = {
+                position = { -30 -10 }
+                parentanchor = bottom|right
+                size = { 300 480 }
+                texture = "gfx/interface/gacha/victoria.dds"
             }
         }
-        icon = {
-            position = { -30 -10 }
-            parentanchor = bottom|right
-            size = { 300 480 }
-            texture = "gfx/interface/gacha/victoria.dds"
-        }
-
-        # Frame
-        popup_bg_frame = {}
-
-        # Close button
-        button_icon_round = {
-            parentanchor = top|right
-            size = { 42 42 }
-            position = { -5 13 }
+        blockoverride "popup_button_onclick" {
             onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
-            input_action = "back"
-            shortcut = "close_window"
-
-            blockoverride "icon" {
-                texture = "gfx/interface/buttons/button_icons/close.dds"
-            }
-            blockoverride "icon_size" {
-                size = { 100% 100% }
-            }
         }
     }
 

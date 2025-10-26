@@ -11,3 +11,4 @@
  gacha_panel_tab_library_sidebar: "Selected Boon"
  gacha_panel_tab_library_sidebar_none: "No Boon Selected"
  gacha_panel_tab_library_sidebar_none_blink: "#bold Select Boon#!"
+ gacha_panel_tab_library_sidebar_activate: "Activate Boon"

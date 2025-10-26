@@ -172,6 +172,8 @@ types gacha_base_panel_types {
                 size = { 296 44 }
             }
         }
+
+        # Gacha selected
         vbox = {
             visible = "[Country.MakeScope.Var('gacha_selected').IsSet]"
             datacontext = "[Country.MakeScope.Var('gacha_selected')]"
@@ -226,8 +228,16 @@ types gacha_base_panel_types {
                     blockoverride "glow" {}
                 }
             }
+
+            button = {
+                using = default_button
+                size = { 200 44 }
+                text = gacha_panel_tab_library_sidebar_activate
+                onclick = "[GetVariableSystem.Set('com_open_window', 'gacha_activate_popup')]"
+            }
         }
 
+        # Nothing selected
         vbox = {
             visible = "[Not(Country.MakeScope.Var('gacha_selected').IsSet)]"
             layoutpolicy_horizontal = expanding

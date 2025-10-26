@@ -1,0 +1,43 @@
+﻿namespace = gacha_orphan_fix
+
+# This file is here to shut up the error log about unused variables
+# These variables are used for the GUI or in localizations
+gacha_orphan_fix.1 = {
+    type = country_event
+
+    placement = root
+
+    hidden = yes
+
+	# DO NOT CALL THIS EVENT
+	trigger = {
+		always = no
+	}
+	
+	cancellation_trigger = {
+		always = yes
+	}
+
+	immediate = {
+        # Sidebar
+        fix_variable_error = { variable = gacha_button_main }
+
+        # Rarities
+		fix_variable_error = { variable = gacha_rarity_common }
+        fix_variable_error = { variable = gacha_rarity_uncommon }
+        fix_variable_error = { variable = gacha_rarity_rare }
+        fix_variable_error = { variable = gacha_rarity_epic }
+        fix_variable_error = { variable = gacha_rarity_legendary }
+        fix_variable_error = { variable = gacha_library_common }
+        fix_variable_error = { variable = gacha_library_uncommon }
+        fix_variable_error = { variable = gacha_library_rare }
+        fix_variable_error = { variable = gacha_library_epic }
+        fix_variable_error = { variable = gacha_library_legendary }
+
+        # Misc
+        fix_variable_error = { variable = gacha_type_name }
+
+	}
+	
+	orphan = yes
+}

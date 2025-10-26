@@ -93,6 +93,83 @@ apply_gacha_ball = {
     }
 }
 
+activate_gacha_ball = {
+    # Remove existing boon in slot
+    if = {
+        limit = {
+            var:$slot$ ?= var:gacha_selected
+        }
+        unapply_gacha_ball = {
+            ball = var:$slot$
+        }
+        remove_variable = $slot$
+    }
+    else = {
+        # Remove existing boon in slot
+        if = {
+            limit = {
+                exists = var:$slot$
+            }
+            unapply_gacha_ball = {
+                ball = var:$slot$
+            }
+            remove_variable = $slot$
+        }
+
+        # Remove selected boon from other slots
+        remove_conflicting_gacha_ball = {
+            slot = gacha_active_one
+        }
+        remove_conflicting_gacha_ball = {
+            slot = gacha_active_two
+        }
+        remove_conflicting_gacha_ball = {
+            slot = gacha_active_three
+        }
+
+        # Activate selected boon
+        set_variable = {
+            name = $slot$
+            value = var:gacha_selected
+        }
+        apply_gacha_ball = {
+            ball = var:$slot$
+        }
+    }
+}
+
+remove_conflicting_gacha_ball = {
+    if = {
+        limit = {
+            OR = {
+                var:$slot$ ?= var:gacha_selected
+                trigger_if = {
+                    limit = {
+                        exists = var:$slot$
+                    }
+                    var:$slot$.var:gacha_type = var:gacha_selected.var:gacha_type
+                }
+            }
+        }
+        unapply_gacha_ball = {
+            ball = var:$slot$
+        }
+        remove_variable = $slot$
+    }
+}
+
+unapply_gacha_ball = {
+    switch = {
+        trigger = $ball$.var:gacha_type.var:gacha_type_id
+        gacha_type_industry = {
+            remove_modifier = gacha_ball_modifier_industry
+        }
+        gacha_type_environment = {
+            remove_modifier = gacha_ball_modifier_environment
+        }
+    }
+}
+
 pull_gacha = {
     create_gacha_ball = {
         scope = $scope$

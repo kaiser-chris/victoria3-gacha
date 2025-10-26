@@ -1,7 +1,7 @@
 types gacha_type_icons {
     type gacha_type_icon = widget {
         parentanchor = center
-        size = { 180 180 }
+        size = { 70% 70% }
         gacha_ball_type_icon = {
             visible = "[IsGachaType('gacha_type_environment')]"
             blockoverride "color_texture" {
@@ -17,9 +17,9 @@ types gacha_type_icons {
     }
 
     type gacha_ball_type_icon = widget {
-        size = { 180 180 }
+        size = { 100% 100% }
         icon = {
-            size = { 180 180 }
+            size = { 100% 100% }
             block "color_texture" {
                 texture = "gfx/interface/icons/generic_icons/green_checkmark.dds"
             }
