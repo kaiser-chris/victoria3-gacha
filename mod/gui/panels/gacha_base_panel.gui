@@ -121,9 +121,374 @@ types gacha_base_panel_types {
         spacing = 20
         visible = "[GetVariableSystem.HasValue('gacha_panel_tab', 'main')]"
 
-        button = {
-            using = default_button
-            onclick = "[GetVariableSystem.Set('com_open_window', 'gacha_pull_popup')]"
+        gacha_main_active_boons = {}
+
+        gacha_main_statistics = {}
+    }
+
+    type gacha_main_active_boons = vbox {
+        layoutpolicy_vertical = expanding
+        layoutpolicy_horizontal = expanding
+        using = entry_bg_fancy
+        minimumsize = { 400 -1 }
+
+        default_header_clean = {
+            blockoverride "header_mask" {
+                using = frame_small_mask_top
+            }
+            blockoverride "size" {
+                layoutpolicy_horizontal = growing
+                size = { 0 50 }
+            }
+
+            blockoverride "textbox" {
+                hbox = {
+                    margin = { 20 0 }
+
+                    textbox = {
+                        layoutpolicy_horizontal = expanding
+                        size = { 0 40 }
+                        text = gacha_panel_tab_main
+                        using = fontsize_mega
+                        align = center
+                        elide = right
+                    }
+                }
+            }
+        }
+
+        hbox = {
+            margin = { 20 20 }
+            spacing = 20
+            layoutpolicy_horizontal = expanding
+            layoutpolicy_vertical = expanding
+            vbox = {
+                datacontext = "[Country.MakeScope.Var('gacha_active_one')]"
+                spacing = 20
+
+                default_header_clean_faded = {
+                    blockoverride "size" {
+                        layoutpolicy_horizontal = growing
+                        size = { 0 44 }
+                    }
+                    blockoverride "textbox" {
+                        hbox = {
+                            margin = { 20 0 }
+                            textbox = {
+                                visible = "[Scope.IsSet]"
+                                layoutpolicy_horizontal = expanding
+                                size = { 0 40 }
+                                raw_text = "[Scope.Var('gacha_type').Var('gacha_type_name').GetFlagName]"
+                                using = fontsize_xxl
+                                align = center
+                                elide = right
+                            }
+                            textbox = {
+                                visible = "[Not(Scope.IsSet)]"
+                                layoutpolicy_horizontal = expanding
+                                size = { 0 40 }
+                                text = gacha_empty
+                                using = fontsize_xxl
+                                align = center
+                                elide = right
+                            }
+                        }
+                    }
+                }
+
+                gacha_rarity_text = {
+                    blockoverride "rarity_text_attributes" {
+                        maximumsize = { 200 -1 }
+                        minimumsize = { 200 -1 }
+                        autoresize = yes
+                        multiline = yes
+                        align = center
+                        using = fontsize_xl
+                        background = {
+                            using = entry_bg
+                            margin = { 0 5 }
+                        }
+                    }
+                }
+
+                gacha_active = {
+                    blockoverride "gacha_size" {
+                        size = { 256 256 }
+                    }
+                    blockoverride "glow_visibility" {
+                        visible = no
+                    }
+                }
+            }
+            vbox = {
+                datacontext = "[Country.MakeScope.Var('gacha_active_two')]"
+                spacing = 20
+
+                default_header_clean_faded = {
+                    blockoverride "size" {
+                        layoutpolicy_horizontal = growing
+                        size = { 0 44 }
+                    }
+                    blockoverride "textbox" {
+                        hbox = {
+                            margin = { 20 0 }
+                            textbox = {
+                                visible = "[Scope.IsSet]"
+                                layoutpolicy_horizontal = expanding
+                                size = { 0 40 }
+                                raw_text = "[Scope.Var('gacha_type').Var('gacha_type_name').GetFlagName]"
+                                using = fontsize_xxl
+                                align = center
+                                elide = right
+                            }
+                            textbox = {
+                                visible = "[Not(Scope.IsSet)]"
+                                layoutpolicy_horizontal = expanding
+                                size = { 0 40 }
+                                text = gacha_empty
+                                using = fontsize_xxl
+                                align = center
+                                elide = right
+                            }
+                        }
+                    }
+                }
+
+                gacha_rarity_text = {
+                    blockoverride "rarity_text_attributes" {
+                        maximumsize = { 200 -1 }
+                        minimumsize = { 200 -1 }
+                        autoresize = yes
+                        multiline = yes
+                        align = center
+                        using = fontsize_xl
+                        background = {
+                            using = entry_bg
+                            margin = { 0 5 }
+                        }
+                    }
+                }
+
+                gacha_active = {
+                    blockoverride "gacha_size" {
+                        size = { 256 256 }
+                    }
+                    blockoverride "glow_visibility" {
+                        visible = no
+                    }
+                }
+            }
+            vbox = {
+                datacontext = "[Country.MakeScope.Var('gacha_active_three')]"
+                spacing = 20
+
+                default_header_clean_faded = {
+                    blockoverride "size" {
+                        layoutpolicy_horizontal = growing
+                        size = { 0 44 }
+                    }
+                    blockoverride "textbox" {
+                        hbox = {
+                            margin = { 20 0 }
+                            textbox = {
+                                visible = "[Scope.IsSet]"
+                                layoutpolicy_horizontal = expanding
+                                size = { 0 40 }
+                                raw_text = "[Scope.Var('gacha_type').Var('gacha_type_name').GetFlagName]"
+                                using = fontsize_xxl
+                                align = center
+                                elide = right
+                            }
+                            textbox = {
+                                visible = "[Not(Scope.IsSet)]"
+                                layoutpolicy_horizontal = expanding
+                                size = { 0 40 }
+                                text = gacha_empty
+                                using = fontsize_xxl
+                                align = center
+                                elide = right
+                            }
+                        }
+                    }
+                }
+
+                gacha_rarity_text = {
+                    blockoverride "rarity_text_attributes" {
+                        maximumsize = { 200 -1 }
+                        minimumsize = { 200 -1 }
+                        autoresize = yes
+                        multiline = yes
+                        align = center
+                        using = fontsize_xl
+                        background = {
+                            using = entry_bg
+                            margin = { 0 5 }
+                        }
+                    }
+                }
+
+                gacha_active = {
+                    blockoverride "gacha_size" {
+                        size = { 256 256 }
+                    }
+                    blockoverride "glow_visibility" {
+                        visible = no
+                    }
+                }
+            }
+        }
+    }
+
+    type gacha_main_statistics = vbox {
+        layoutpolicy_vertical = expanding
+        using = entry_bg_fancy
+        minimumsize = { 400 -1 }
+
+        default_header_clean = {
+            blockoverride "header_mask" {
+                using = frame_small_mask_top
+            }
+            blockoverride "size" {
+                layoutpolicy_horizontal = growing
+                size = { 0 50 }
+            }
+
+            blockoverride "textbox" {
+                hbox = {
+                    margin = { 20 0 }
+
+                    textbox = {
+                        layoutpolicy_horizontal = expanding
+                        size = { 0 40 }
+                        text = gacha_panel_tab_main_statistics
+                        using = fontsize_mega
+                        align = center
+                        elide = right
+                    }
+                }
+            }
+        }
+
+        vbox = {
+            margin = { 50 20 }
+            spacing = 20
+            layoutpolicy_horizontal = expanding
+            layoutpolicy_vertical = expanding
+
+            hbox = {
+                layoutpolicy_horizontal = expanding
+                spacing = 10
+                textbox = {
+                    layoutpolicy_horizontal = expanding
+                    autoresize = yes
+                    multiline = yes
+                    text = gacha_rarity_common
+                    align = left
+                }
+                icon = {
+                    size = { 20 20 }
+                    texture = "gfx/interface/gacha/balls/gacha_ball_gold.dds"
+                }
+                textbox = {
+                    size = { 15 20 }
+                    raw_text = "[Country.MakeScope.ScriptValue('gacha_rarity_common_count')]"
+                    align = right
+                }
+            }
+
+            hbox = {
+                layoutpolicy_horizontal = expanding
+                spacing = 10
+                textbox = {
+                    layoutpolicy_horizontal = expanding
+                    autoresize = yes
+                    multiline = yes
+                    text = gacha_rarity_uncommon
+                    align = left
+                }
+                icon = {
+                    size = { 20 20 }
+                    texture = "gfx/interface/gacha/balls/gacha_ball_green.dds"
+                }
+                textbox = {
+                    size = { 15 20 }
+                    raw_text = "[Country.MakeScope.ScriptValue('gacha_rarity_uncommon_count')]"
+                    align = right
+                }
+            }
+
+            hbox = {
+                layoutpolicy_horizontal = expanding
+                spacing = 10
+                textbox = {
+                    layoutpolicy_horizontal = expanding
+                    autoresize = yes
+                    multiline = yes
+                    text = gacha_rarity_rare
+                    align = left
+                }
+                icon = {
+                    size = { 20 20 }
+                    texture = "gfx/interface/gacha/balls/gacha_ball_blue.dds"
+                }
+                textbox = {
+                    size = { 15 20 }
+                    raw_text = "[Country.MakeScope.ScriptValue('gacha_rarity_rare_count')]"
+                    align = right
+                }
+            }
+
+            hbox = {
+                layoutpolicy_horizontal = expanding
+                spacing = 10
+                textbox = {
+                    layoutpolicy_horizontal = expanding
+                    autoresize = yes
+                    multiline = yes
+                    text = gacha_rarity_epic
+                    align = left
+                }
+                icon = {
+                    size = { 20 20 }
+                    texture = "gfx/interface/gacha/balls/gacha_ball_purple.dds"
+                }
+                textbox = {
+                    size = { 15 20 }
+                    raw_text = "[Country.MakeScope.ScriptValue('gacha_rarity_epic_count')]"
+                    align = right
+                }
+            }
+
+            hbox = {
+                margin_bottom = 40
+                layoutpolicy_horizontal = expanding
+                spacing = 10
+                textbox = {
+                    layoutpolicy_horizontal = expanding
+                    autoresize = yes
+                    multiline = yes
+                    text = gacha_rarity_legendary
+                    align = left
+                }
+                icon = {
+                    size = { 20 20 }
+                    texture = "gfx/interface/gacha/balls/gacha_ball_red.dds"
+                }
+                textbox = {
+                    size = { 15 20 }
+                    raw_text = "[Country.MakeScope.ScriptValue('gacha_rarity_legendary_count')]"
+                    align = right
+                }
+            }
+
+            button = {
+                size = { 256 44 }
+                using = default_button_primary_action
+                onclick = "[GetVariableSystem.Set('com_open_window', 'gacha_pull_popup')]"
+                text = gacha_panel_tab_main_pull_button
+            }
+
+            expand = {}
         }
     }
 
@@ -131,8 +496,8 @@ types gacha_base_panel_types {
         layoutpolicy_vertical = expanding
         layoutpolicy_horizontal = expanding
         visible = "[GetVariableSystem.HasValue('gacha_panel_tab', 'library')]"
-
-        margin_left = 30
+        margin = { 20 20 }
+        spacing = 20
 
         gacha_library_sidebar = {}
 
@@ -141,35 +506,31 @@ types gacha_base_panel_types {
 
     type gacha_library_sidebar = vbox {
         layoutpolicy_vertical = expanding
-        minimumsize = { 300 -1 }
-        margin_top = -3
-
-        background = {
-            using = default_bg
-        }
-        background = {
-            spriteType = Corneredtiled
-            spriteborder = { 10 10 }
-            margin = { 3 0 }
-            shaderfile = "gfx/FX/pdxgui_default.shader"
-            texture = "gfx/interface/backgrounds/side_frame.dds"
-            texture_density = 2
-
-            modify_texture = {
-                texture = "gfx/interface/backgrounds/default_bg_shading.dds"
-                spriteType = Corneredstretched
-                spriteborder = { 0 0 }
-                blend_mode = overlay
-                alpha = 1
-            }
-        }
+        using = entry_bg_fancy
+        minimumsize = { 350 -1 }
 
         default_header_clean = {
-            blockoverride "text" {
-                text = gacha_panel_tab_library_sidebar
+            blockoverride "header_mask" {
+                using = frame_small_mask_top
             }
             blockoverride "size" {
-                size = { 296 44 }
+                layoutpolicy_horizontal = growing
+                size = { 0 50 }
+            }
+
+            blockoverride "textbox" {
+                hbox = {
+                    margin = { 20 0 }
+
+                    textbox = {
+                        layoutpolicy_horizontal = expanding
+                        size = { 0 40 }
+                        text = gacha_panel_tab_library_sidebar
+                        using = fontsize_mega
+                        align = center
+                        elide = right
+                    }
+                }
             }
         }
 
@@ -224,13 +585,14 @@ types gacha_base_panel_types {
 
             vbox = {
                 margin_top = 10
+                margin_bottom = 10
                 gacha_ball = {
                     blockoverride "glow" {}
                 }
             }
 
             button = {
-                using = default_button
+                using = default_button_primary_action
                 size = { 200 44 }
                 text = gacha_panel_tab_library_sidebar_activate
                 onclick = "[GetVariableSystem.Set('com_open_window', 'gacha_activate_popup')]"
@@ -269,7 +631,6 @@ types gacha_base_panel_types {
         layoutpolicy_vertical = expanding
         layoutpolicy_horizontal = expanding
         spacing = 20
-        margin = { 20 20 }
 
         gacha_library_group = {
             blockoverride "expand_onclick" {
@@ -542,21 +903,28 @@ types gacha_base_panel_types {
                             .AddScope('gacha_item', Scope.GetCharacter.MakeScope)
                             .End
                         )]"
-                        scale = 0.8
                         gacha_ball = {
+                            parentanchor = center
                             visible = "[Not(ScriptedGui.IsShown(GuiScope
                                 .SetRoot(Country.MakeScope)
                                 .AddScope('gacha_item', Scope.GetCharacter.MakeScope)
                                 .End
                             ))]"
                             blockoverride "glow" {}
+                            blockoverride "gacha_size" {
+                                size = { 220 220 }
+                            }
                         }
                         gacha_ball = {
+                            parentanchor = center
                             visible = "[ScriptedGui.IsShown(GuiScope
                                 .SetRoot(Country.MakeScope)
                                 .AddScope('gacha_item', Scope.GetCharacter.MakeScope)
                                 .End
                             )]"
+                            blockoverride "gacha_size" {
+                                size = { 220 220 }
+                            }
                         }
                     }
                 }
@@ -568,7 +936,21 @@ types gacha_base_panel_types {
                     visible = yes
                 }
                 align = center
+                default_format = "#header"
                 raw_text = "Empty"
+                background = {
+                    texture = gfx/frontend/interface/colors/black.dds
+                    alpha = 0.2
+                    margin = { 0 20 }
+
+                    modify_texture = {
+                        texture = "gfx/interface/masks/fade_horizontal_center.dds"
+                        spriteType = Corneredstretched
+                        spriteborder = { 0 0 }
+                        blend_mode = alphamultiply
+                        alpha = 0.9
+                    }
+                }
             }
         }
     }

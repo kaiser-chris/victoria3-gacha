@@ -1,7 +1,9 @@
 ﻿l_english:
  dlc_gacha: "Gacha!"
  dlc_gacha_desc: "Gacha in Victoria 3."
+ gacha_empty: "Empty"
 # Rarities
+ gacha_rarity_unknown: "Unknown"
  gacha_rarity_common: "#gacha_common Common#!"
  concept_gacha_common: "Common Boon"
  concept_gacha_commons: "Common Boons"

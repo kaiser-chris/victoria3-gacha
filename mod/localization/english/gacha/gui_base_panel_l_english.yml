@@ -7,6 +7,8 @@
 # Panel
  gacha_panel_base_title: "Her Majesty's Boons"
  gacha_panel_tab_main: "Active Boons"
+ gacha_panel_tab_main_statistics: "Statistics"
+ gacha_panel_tab_main_pull_button: "Ask for a new Boon"
  gacha_panel_tab_library: "Library"
  gacha_panel_tab_library_sidebar: "Selected Boon"
  gacha_panel_tab_library_sidebar_none: "No Boon Selected"

@@ -73,6 +73,11 @@ types gacha_popups {
         layoutpolicy_horizontal = expanding
         textbox = {
             block "rarity_text_attributes" {}
+            visible = "[Not(Scope.IsSet)]"
+            text = gacha_rarity_unknown
+        }
+        textbox = {
+            block "rarity_text_attributes" {}
             visible = "[IsGachaRarity('gacha_rarity_common')]"
             text = gacha_rarity_common
         }

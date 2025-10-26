@@ -34,11 +34,12 @@ types gacha_popups {
                 hbox = {
                     maximumsize = { 600 -1 }
                     gacha_active_button = {
-                        # onclick = "[GetVariableSystem.Clear('com_open_window')]"
-                        # onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
-
                         blockoverride "gacha_button_context" {
                             datacontext = "[GetScriptedGui('sgui_gacha_activate_one')]"
+                        }
+                        blockoverride "gacha_button_additional_onclick" {
+                            onclick = "[GetVariableSystem.Clear('com_open_window')]"
+                            onclick = "[GetScriptedGui('sgui_gacha_activate').Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
                         }
                         blockoverride "gacha_context" {
                             datacontext = "[Country.MakeScope.Var('gacha_active_one')]"
@@ -51,11 +52,12 @@ types gacha_popups {
                         }
                     }
                     gacha_active_button = {
-                        # onclick = "[GetVariableSystem.Clear('com_open_window')]"
-                        # onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
-
                         blockoverride "gacha_button_context" {
                             datacontext = "[GetScriptedGui('sgui_gacha_activate_two')]"
+                        }
+                        blockoverride "gacha_button_additional_onclick" {
+                            onclick = "[GetVariableSystem.Clear('com_open_window')]"
+                            onclick = "[GetScriptedGui('sgui_gacha_activate').Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
                         }
                         blockoverride "gacha_context" {
                             datacontext = "[Country.MakeScope.Var('gacha_active_two')]"
@@ -68,11 +70,12 @@ types gacha_popups {
                         }
                     }
                     gacha_active_button = {
-                        # onclick = "[GetVariableSystem.Clear('com_open_window')]"
-                        # onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
-
                         blockoverride "gacha_button_context" {
                             datacontext = "[GetScriptedGui('sgui_gacha_activate_three')]"
+                        }
+                        blockoverride "gacha_button_additional_onclick" {
+                            onclick = "[GetVariableSystem.Clear('com_open_window')]"
+                            onclick = "[GetScriptedGui('sgui_gacha_activate').Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
                         }
                         blockoverride "gacha_context" {
                             datacontext = "[Country.MakeScope.Var('gacha_active_three')]"
