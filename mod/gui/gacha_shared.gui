@@ -204,7 +204,9 @@ types gacha_popups {
             position = { -5 13 }
 
             block "popup_button_onclick" {}
-            input_action = "back"
+            block "popup_button_action" {
+                input_action = "back"
+            }
             shortcut = "close_window"
 
             blockoverride "icon" {

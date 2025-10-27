@@ -22,13 +22,14 @@ types gacha_popups {
                 spacing = 20
 
                 textbox = {
-                    maximumsize = { 600 -1 }
-                    minimumsize = { 600 -1 }
                     margin = { 20 20 }
                     autoresize = yes
                     multiline = yes
                     align = center
                     text = gacha_activate_description
+                    background = {
+                        using = entry_bg
+                    }
                 }
 
                 hbox = {
@@ -90,12 +91,39 @@ types gacha_popups {
                 }
 
                 expand = {}
+
+                hbox = {
+                    margin = { 50 0 }
+                    margin_bottom = 50
+                    layoutpolicy_horizontal = expanding
+                    spacing = 20
+
+                    button = {
+                        layoutpolicy_horizontal = expanding
+                        using = default_button_primary
+                        size = { -1 40 }
+                        text = gacha_activate_back
+                        onclick = "[GetVariableSystem.Set('gacha_panel_tab', 'library')]"
+                        onclick = "[GetVariableSystem.Set('com_open_window', 'gacha_button_main')]"
+                        input_action = "back"
+                    }
+
+                    button = {
+                        layoutpolicy_horizontal = expanding
+                        using = default_button_primary_action
+                        size = { -1 40 }
+                        text = gacha_activate_close
+                        onclick = "[GetVariableSystem.Clear('com_open_window')]"
+                        onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
+                    }
+                }
             }
         }
         blockoverride "popup_button_onclick" {
             onclick = "[GetVariableSystem.Clear('com_open_window')]"
             onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
         }
+        blockoverride "popup_button_action" {}
     }
 
 }

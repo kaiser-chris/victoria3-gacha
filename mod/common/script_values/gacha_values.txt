@@ -1,7 +1,7 @@
 ﻿gacha_struct_ball = 1
 gacha_struct_type = 2
 
-# Rarities
+# Rarity Multipliers
 # = Rarities are multipliers for the underlying
 # = static modifier. Modify these values to balance results
 gacha_rarity_common = 1
@@ -9,42 +9,87 @@ gacha_rarity_uncommon = 2
 gacha_rarity_rare = 3
 gacha_rarity_epic = 4
 gacha_rarity_legendary = 5
+
+# Rarity Chances
+# = Chances are in percent
+# = The sum of all chances needs to be 100%
+gacha_rarity_common_chance = 55
+gacha_rarity_uncommon_chance = 32
+gacha_rarity_rare_chance = 8
+gacha_rarity_epic_chance = 4
+gacha_rarity_legendary_chance = 1
+
+# Rarity Pull Rate
+gacha_rarity_common_rate = {
+    value = gacha_rarity_common_chance
+}
+gacha_rarity_uncommon_rate = {
+    value = gacha_rarity_common_chance
+    add = gacha_rarity_uncommon_chance
+}
+gacha_rarity_rare_rate = {
+    value = gacha_rarity_common_chance
+    add = gacha_rarity_uncommon_chance
+    add = gacha_rarity_rare_chance
+}
+gacha_rarity_epic_rate = {
+    value = gacha_rarity_common_chance
+    add = gacha_rarity_uncommon_chance
+    add = gacha_rarity_rare_chance
+    add = gacha_rarity_epic_chance
+}
+gacha_rarity_legendary_rate = {
+    value = gacha_rarity_common_chance
+    add = gacha_rarity_uncommon_chance
+    add = gacha_rarity_rare_chance
+    add = gacha_rarity_epic_chance
+    add = gacha_rarity_legendary_chance
+}
+
 gacha_random_rarity = {
     value = { 1 100 }
     round_to = 1
     save_temporary_value_as = temp_chance
     if = {
         limit = {
-            scope:temp_chance <= 55 # 55%
+            scope:temp_chance <= gacha_rarity_common_rate
         }
         value = gacha_rarity_common
     }
     else_if = {
         limit = {
-            scope:temp_chance <= 87 # 32%
+            scope:temp_chance <= gacha_rarity_uncommon_rate
         }
         value = gacha_rarity_uncommon
     }
     else_if = {
         limit = {
-            scope:temp_chance <= 95 # 8%
+            scope:temp_chance <= gacha_rarity_rare_rate
         }
         value = gacha_rarity_rare
     }
     else_if = {
         limit = {
-            scope:temp_chance <= 99 # 4%
+            scope:temp_chance <= gacha_rarity_epic_rate
         }
         value = gacha_rarity_epic
     }
     else_if = {
         limit = {
-            scope:temp_chance <= 100 # 1%
+            scope:temp_chance <= gacha_rarity_legendary_rate
         }
         value = gacha_rarity_legendary
     }
 }
 
+# Rarity counts
+gacha_rarity_count_all = {
+    value = 0
+    every_in_list = {
+        variable = gacha_library
+        add = 1
+    }
+}
 gacha_rarity_common_count = {
     value = 0
     every_in_list = {
@@ -55,7 +100,6 @@ gacha_rarity_common_count = {
         add = 1
     }
 }
-
 gacha_rarity_uncommon_count = {
     value = 0
     every_in_list = {
@@ -66,7 +110,6 @@ gacha_rarity_uncommon_count = {
         add = 1
     }
 }
-
 gacha_rarity_rare_count = {
     value = 0
     every_in_list = {
@@ -77,7 +120,6 @@ gacha_rarity_rare_count = {
         add = 1
     }
 }
-
 gacha_rarity_epic_count = {
     value = 0
     every_in_list = {
@@ -88,7 +130,6 @@ gacha_rarity_epic_count = {
         add = 1
     }
 }
-
 gacha_rarity_legendary_count = {
     value = 0
     every_in_list = {

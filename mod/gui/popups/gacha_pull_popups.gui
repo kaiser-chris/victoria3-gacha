@@ -3,7 +3,7 @@ types gacha_popups {
     type gacha_pull_popup = gacha_popup_window {
         datacontext = "[GetScriptedGui('sgui_gacha_pull')]"
         blockoverride "popup_size" {
-            size = { 450 600 }
+            size = { 830 600 }
         }
         blockoverride "popup_visibility" {
             visible = "[GetVariableSystem.HasValue('com_open_window', 'gacha_pull_popup')]"
@@ -12,10 +12,173 @@ types gacha_popups {
             text = gacha_pull_title
         }
         blockoverride "popup_content" {
-            vbox = {
+            hbox = {
+                parentanchor = hcenter
+                maximumsize = { 724 -1 }
                 layoutpolicy_vertical = expanding
                 layoutpolicy_horizontal = expanding
                 margin_top = 60
+                spacing = 20
+
+                widget = {
+                    size = { 362 450 }
+                    vbox = {
+                        layoutpolicy_vertical = expanding
+                        layoutpolicy_horizontal = expanding
+                        spacing = 20
+
+                        vbox = {
+                            layoutpolicy_vertical = expanding
+                            layoutpolicy_horizontal = expanding
+                            using = entry_bg_fancy
+
+                            default_header_clean = {
+                                blockoverride "header_mask" {
+                                    using = frame_small_mask_top
+                                }
+                                blockoverride "size" {
+                                    layoutpolicy_horizontal = growing
+                                    size = { 0 50 }
+                                }
+
+                                blockoverride "textbox" {
+                                    hbox = {
+                                        margin = { 20 0 }
+
+                                        textbox = {
+                                            layoutpolicy_horizontal = expanding
+                                            size = { 0 40 }
+                                            text = gacha_pull_rates
+                                            using = fontsize_xxl
+                                            align = center
+                                            elide = right
+                                        }
+                                    }
+                                }
+                            }
+
+                            vbox = {
+                                layoutpolicy_vertical = expanding
+                                layoutpolicy_horizontal = expanding
+                                margin = { 50 20 }
+                                spacing = 20
+
+                                hbox = {
+                                    layoutpolicy_horizontal = expanding
+                                    spacing = 10
+                                    textbox = {
+                                        layoutpolicy_horizontal = expanding
+                                        autoresize = yes
+                                        multiline = yes
+                                        raw_text = "[Concept('concept_gacha_common', Localize('gacha_rarity_common'))]"
+                                        align = left
+                                    }
+                                    textbox = {
+                                        autoresize = yes
+                                        multiline = yes
+                                        raw_text = "#v [GetPlayer.MakeScope.ScriptValue('gacha_rarity_common_chance')]%#!"
+                                        align = right
+                                    }
+                                }
+
+                                hbox = {
+                                    layoutpolicy_horizontal = expanding
+                                    spacing = 10
+                                    textbox = {
+                                        layoutpolicy_horizontal = expanding
+                                        autoresize = yes
+                                        multiline = yes
+                                        raw_text = "[Concept('concept_gacha_uncommon', Localize('gacha_rarity_uncommon'))]"
+                                        align = left
+                                    }
+                                    textbox = {
+                                        autoresize = yes
+                                        multiline = yes
+                                        raw_text = "#v [GetPlayer.MakeScope.ScriptValue('gacha_rarity_uncommon_chance')]%#!"
+                                        align = right
+                                    }
+                                }
+
+                                hbox = {
+                                    layoutpolicy_horizontal = expanding
+                                    spacing = 10
+                                    textbox = {
+                                        layoutpolicy_horizontal = expanding
+                                        autoresize = yes
+                                        multiline = yes
+                                        raw_text = "[Concept('concept_gacha_rare', Localize('gacha_rarity_rare'))]"
+                                        align = left
+                                    }
+                                    textbox = {
+                                        autoresize = yes
+                                        multiline = yes
+                                        raw_text = "#v [GetPlayer.MakeScope.ScriptValue('gacha_rarity_rare_chance')]%#!"
+                                        align = right
+                                    }
+                                }
+
+                                hbox = {
+                                    layoutpolicy_horizontal = expanding
+                                    spacing = 10
+                                    textbox = {
+                                        layoutpolicy_horizontal = expanding
+                                        autoresize = yes
+                                        multiline = yes
+                                        raw_text = "[Concept('concept_gacha_epic', Localize('gacha_rarity_epic'))]"
+                                        align = left
+                                    }
+                                    textbox = {
+                                        autoresize = yes
+                                        multiline = yes
+                                        raw_text = "#v [GetPlayer.MakeScope.ScriptValue('gacha_rarity_epic_chance')]%#!"
+                                        align = right
+                                    }
+                                }
+
+                                hbox = {
+                                    layoutpolicy_horizontal = expanding
+                                    spacing = 10
+                                    textbox = {
+                                        layoutpolicy_horizontal = expanding
+                                        autoresize = yes
+                                        multiline = yes
+                                        raw_text = "[Concept('concept_gacha_legendary', Localize('gacha_rarity_legendary'))]"
+                                        align = left
+                                    }
+                                    textbox = {
+                                        autoresize = yes
+                                        multiline = yes
+                                        raw_text = "#v [GetPlayer.MakeScope.ScriptValue('gacha_rarity_legendary_chance')]%#!"
+                                        align = right
+                                    }
+                                }
+
+                                expand = {}
+                            }
+
+                            expand = {}
+                        }
+
+                        button = {
+                            layoutpolicy_horizontal = expanding
+                            using = default_button_primary
+                            size = { -1 40 }
+                            text = gacha_pull_result_library
+                            onclick = "[GetVariableSystem.Set('gacha_panel_tab', 'library')]"
+                            onclick = "[GetVariableSystem.Set('com_open_window', 'gacha_button_main')]"
+                        }
+
+                        button = {
+                            layoutpolicy_horizontal = expanding
+                            using = default_button_primary_action
+                            size = { -1 40 }
+                            text = gacha_pull_cancel
+                            onclick = "[GetVariableSystem.Set('gacha_panel_tab', 'main')]"
+                            onclick = "[GetVariableSystem.Set('com_open_window', 'gacha_button_main')]"
+                            input_action = "back"
+                        }
+                    }
+                }
 
                 gacha_pull_button = {}
             }
@@ -23,6 +186,7 @@ types gacha_popups {
         blockoverride "popup_button_onclick" {
             onclick = "[GetVariableSystem.Clear('com_open_window')]"
         }
+        blockoverride "popup_button_action" {}
     }
 
     type gacha_pull_result_popup = gacha_popup_window {
@@ -82,6 +246,7 @@ types gacha_popups {
                             size = { 150 40 }
                             using = default_button_action
                             text = gacha_pull_result_library
+                            onclick = "[GetVariableSystem.Set('gacha_panel_tab', 'library')]"
                             onclick = "[GetVariableSystem.Set('com_open_window', 'gacha_button_main')]"
                             onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
                         }
