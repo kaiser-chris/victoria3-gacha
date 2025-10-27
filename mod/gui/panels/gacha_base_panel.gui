@@ -63,45 +63,49 @@ types gacha_base_panel_types {
         }
 
         blockoverride "fixed_top" {
-            tab_buttons_fullscreen = {
-                # Main
-                blockoverride "first_button" {
-                    text = gacha_panel_tab_main
-                }
-                blockoverride "first_button_tooltip" {
-                    tooltip = gacha_panel_tab_main
-                }
-                blockoverride "first_button_click" {
-                    onclick = "[GetVariableSystem.Set('gacha_panel_tab', 'main')]"
-                }
-                blockoverride "first_button_visibility" {
-                    visible = "[GetVariableSystem.HasValue('gacha_panel_tab', 'main')]"
-                }
-                blockoverride "first_button_visibility_checked" {
-                    visible = "[Not(GetVariableSystem.HasValue('gacha_panel_tab', 'main'))]"
-                }
-                blockoverride "first_button_selected" {
-                    text = gacha_panel_tab_main
-                }
+            vbox = {
+                layoutpolicy_horizontal = expanding
 
-                # Library
-                blockoverride "second_button" {
-                    text = gacha_panel_tab_library
-                }
-                blockoverride "second_button_tooltip" {
-                    tooltip = gacha_panel_tab_library
-                }
-                blockoverride "second_button_click" {
-                    onclick = "[GetVariableSystem.Set('gacha_panel_tab', 'library')]"
-                }
-                blockoverride "second_button_visibility" {
-                    visible = "[GetVariableSystem.HasValue('gacha_panel_tab', 'library')]"
-                }
-                blockoverride "second_button_visibility_checked" {
-                    visible = "[Not(GetVariableSystem.HasValue('gacha_panel_tab', 'library'))]"
-                }
-                blockoverride "second_button_selected" {
-                    text = gacha_panel_tab_library
+                tab_buttons_fullscreen = {
+                    # Main
+                    blockoverride "first_button" {
+                        text = gacha_panel_tab_main
+                    }
+                    blockoverride "first_button_tooltip" {
+                        tooltip = gacha_panel_tab_main
+                    }
+                    blockoverride "first_button_click" {
+                        onclick = "[GetVariableSystem.Set('gacha_panel_tab', 'main')]"
+                    }
+                    blockoverride "first_button_visibility" {
+                        visible = "[GetVariableSystem.HasValue('gacha_panel_tab', 'main')]"
+                    }
+                    blockoverride "first_button_visibility_checked" {
+                        visible = "[Not(GetVariableSystem.HasValue('gacha_panel_tab', 'main'))]"
+                    }
+                    blockoverride "first_button_selected" {
+                        text = gacha_panel_tab_main
+                    }
+
+                    # Library
+                    blockoverride "second_button" {
+                        text = gacha_panel_tab_library
+                    }
+                    blockoverride "second_button_tooltip" {
+                        tooltip = gacha_panel_tab_library
+                    }
+                    blockoverride "second_button_click" {
+                        onclick = "[GetVariableSystem.Set('gacha_panel_tab', 'library')]"
+                    }
+                    blockoverride "second_button_visibility" {
+                        visible = "[GetVariableSystem.HasValue('gacha_panel_tab', 'library')]"
+                    }
+                    blockoverride "second_button_visibility_checked" {
+                        visible = "[Not(GetVariableSystem.HasValue('gacha_panel_tab', 'library'))]"
+                    }
+                    blockoverride "second_button_selected" {
+                        text = gacha_panel_tab_library
+                    }
                 }
             }
         }
@@ -529,7 +533,135 @@ types gacha_base_panel_types {
 
         gacha_library_sidebar = {}
 
-        gacha_library_by_rarity = {}
+        vbox = {
+            layoutpolicy_vertical = expanding
+            layoutpolicy_horizontal = expanding
+            spacing = 20
+
+            gacha_library_combinator = {}
+
+            gacha_library_by_rarity = {}
+        }
+    }
+
+    type gacha_library_combinator = hbox {
+        visible = "[Not(IsDataModelEmpty(Country.MakeScope.GetList('gacha_combinator')))]"
+        layoutpolicy_horizontal = expanding
+        spacing = 20
+
+        hbox = {
+            layoutpolicy_horizontal = expanding
+            layoutpolicy_vertical = expanding
+            background = {
+                using = simple_frame
+            }
+            textbox = {
+                multiline = yes
+                autoresize = yes
+                align = center
+                text = gacha_panel_tab_library_sidebar_combine_selected
+                using = fontsize_mega
+                default_format = "#header"
+            }
+
+            widget = {
+                size = { 340 120 }
+                hbox = {
+                    layoutpolicy_horizontal = expanding
+                    parentanchor = top|left
+                    spacing = 20
+                    margin = { 20 20 }
+                    datacontext = "[Country.MakeScope.Var('non_existing_scope')]"
+
+                    expand = {}
+
+                    gacha_active = {
+                        blockoverride "glow" {}
+                        blockoverride "gacha_size" {
+                            size = { 80 80 }
+                        }
+                    }
+                    gacha_active = {
+                        blockoverride "glow" {}
+                        blockoverride "gacha_size" {
+                            size = { 80 80 }
+                        }
+                    }
+                    gacha_active = {
+                        blockoverride "glow" {}
+                        blockoverride "gacha_size" {
+                            size = { 80 80 }
+                        }
+                    }
+                }
+                hbox = {
+                    parentanchor = top|left
+                    layoutpolicy_horizontal = expanding
+
+                    expand = {}
+
+                    hbox = {
+                        datamodel = "[Country.MakeScope.GetList('gacha_combinator')]"
+                        spacing = 20
+                        margin = { 20 20 }
+
+                        item = {
+                            gacha_active = {
+                                blockoverride "glow" {}
+                                blockoverride "gacha_size" {
+                                    size = { 80 80 }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        vbox = {
+            layoutpolicy_vertical = expanding
+
+            button = {
+                datacontext = "[GetScriptedGui('sgui_gacha_combine_clear')]"
+                using = default_button
+                visible = "[ScriptedGui.IsShown(GuiScope
+                    .SetRoot(Country.MakeScope)
+                    .End
+                )]"
+                enabled = "[ScriptedGui.IsValid(GuiScope
+                    .SetRoot(Country.MakeScope)
+                    .End
+                )]"
+                size = { 240 44 }
+                text = gacha_panel_tab_library_sidebar_combine_clear
+                onclick = "[ScriptedGui.Execute(GuiScope
+                    .SetRoot(Country.MakeScope)
+                    .End
+                )]"
+            }
+
+            expand = {}
+
+            button = {
+                datacontext = "[GetScriptedGui('sgui_gacha_combine')]"
+                using = default_button_primary_action
+                visible = "[ScriptedGui.IsShown(GuiScope
+                    .SetRoot(Country.MakeScope)
+                    .End
+                )]"
+                enabled = "[ScriptedGui.IsValid(GuiScope
+                    .SetRoot(Country.MakeScope)
+                    .End
+                )]"
+                size = { 240 44 }
+                text = gacha_panel_tab_library_sidebar_combine_execute
+                tooltip = gacha_panel_tab_library_sidebar_combine_execute_tooltip
+                onclick = "[ScriptedGui.Execute(GuiScope
+                    .SetRoot(Country.MakeScope)
+                    .End
+                )]"
+            }
+        }
     }
 
     type gacha_library_sidebar = vbox {
@@ -642,8 +774,9 @@ types gacha_base_panel_types {
                     .AddScope('gacha_item', Scope.GetCharacter.MakeScope)
                     .End
                 ))]"
+                enabled = "[IsDataModelEmpty(Country.MakeScope.GetList('gacha_combinator'))]"
                 tooltip = gacha_panel_tab_library_sidebar_activate_tooltip
-                size = { 200 44 }
+                size = { 240 44 }
                 text = gacha_panel_tab_library_sidebar_activate
                 onclick = "[GetVariableSystem.Set('com_open_window', 'gacha_activate_popup')]"
             }
@@ -655,10 +788,57 @@ types gacha_base_panel_types {
                     .AddScope('gacha_item', Scope.GetCharacter.MakeScope)
                     .End
                 )]"
+                enabled = "[IsDataModelEmpty(Country.MakeScope.GetList('gacha_combinator'))]"
                 tooltip = gacha_panel_tab_library_sidebar_deactivate_tooltip
-                size = { 200 44 }
+                size = { 240 44 }
                 text = gacha_panel_tab_library_sidebar_deactivate
                 onclick = "[GetScriptedGui('sgui_gacha_deactivate').Execute(GuiScope
+                    .SetRoot(Country.MakeScope)
+                    .AddScope('gacha_item', Scope.GetCharacter.MakeScope)
+                    .End
+                )]"
+            }
+
+            button = {
+                datacontext = "[GetScriptedGui('sgui_gacha_combine_add')]"
+                using = default_button_primary_action
+                visible = "[ScriptedGui.IsShown(GuiScope
+                    .SetRoot(Country.MakeScope)
+                    .AddScope('gacha_item', Scope.GetCharacter.MakeScope)
+                    .End
+                )]"
+                enabled = "[ScriptedGui.IsValid(GuiScope
+                    .SetRoot(Country.MakeScope)
+                    .AddScope('gacha_item', Scope.GetCharacter.MakeScope)
+                    .End
+                )]"
+                tooltip = gacha_panel_tab_library_sidebar_combine_tooltip
+                size = { 240 44 }
+                text = gacha_panel_tab_library_sidebar_combine
+                onclick = "[ScriptedGui.Execute(GuiScope
+                    .SetRoot(Country.MakeScope)
+                    .AddScope('gacha_item', Scope.GetCharacter.MakeScope)
+                    .End
+                )]"
+            }
+
+            button = {
+                datacontext = "[GetScriptedGui('sgui_gacha_combine_remove')]"
+                using = default_button_primary_action
+                visible = "[ScriptedGui.IsShown(GuiScope
+                    .SetRoot(Country.MakeScope)
+                    .AddScope('gacha_item', Scope.GetCharacter.MakeScope)
+                    .End
+                )]"
+                enabled = "[ScriptedGui.IsValid(GuiScope
+                    .SetRoot(Country.MakeScope)
+                    .AddScope('gacha_item', Scope.GetCharacter.MakeScope)
+                    .End
+                )]"
+                tooltip = gacha_panel_tab_library_sidebar_combine_remove_tooltip
+                size = { 240 44 }
+                text = gacha_panel_tab_library_sidebar_combine_remove
+                onclick = "[ScriptedGui.Execute(GuiScope
                     .SetRoot(Country.MakeScope)
                     .AddScope('gacha_item', Scope.GetCharacter.MakeScope)
                     .End
@@ -977,9 +1157,21 @@ types gacha_base_panel_types {
                                 .AddScope('gacha_item', Scope.GetCharacter.MakeScope)
                                 .End
                             ))]"
+                            enabled = "[ScriptedGui.IsValid(GuiScope
+                                .SetRoot(Country.MakeScope)
+                                .AddScope('gacha_item', Scope.GetCharacter.MakeScope)
+                                .End
+                            )]"
                             blockoverride "glow" {}
                             blockoverride "gacha_size" {
                                 size = { 220 220 }
+                            }
+                            blockoverride "gacha_highlight_visibility" {
+                                visible = "[GetScriptedGui('sgui_gacha_combine_remove').IsShown(GuiScope
+                                    .SetRoot(Country.MakeScope)
+                                    .AddScope('gacha_item', Scope.GetCharacter.MakeScope)
+                                    .End
+                                )]"
                             }
                         }
                         gacha_ball = {
@@ -989,8 +1181,20 @@ types gacha_base_panel_types {
                                 .AddScope('gacha_item', Scope.GetCharacter.MakeScope)
                                 .End
                             )]"
+                            enabled = "[ScriptedGui.IsValid(GuiScope
+                                .SetRoot(Country.MakeScope)
+                                .AddScope('gacha_item', Scope.GetCharacter.MakeScope)
+                                .End
+                            )]"
                             blockoverride "gacha_size" {
                                 size = { 220 220 }
+                            }
+                            blockoverride "gacha_highlight_visibility" {
+                                visible = "[GetScriptedGui('sgui_gacha_combine_remove').IsShown(GuiScope
+                                    .SetRoot(Country.MakeScope)
+                                    .AddScope('gacha_item', Scope.GetCharacter.MakeScope)
+                                    .End
+                                )]"
                             }
                         }
                     }

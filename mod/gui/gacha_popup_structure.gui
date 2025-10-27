@@ -10,4 +10,5 @@ widget = {
     gacha_pull_popup = {}
     gacha_pull_result_popup = {}
     gacha_activate_popup = {}
+    gacha_combine_result_popup = {}
 }

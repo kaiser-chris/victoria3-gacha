@@ -67,6 +67,15 @@ types gacha_popups {
                 using = gacha_rotate_glow_animation
             }
         }
+        block "gacha_highlight" {
+            background = {
+                block "gacha_highlight_visibility" {
+                    visible = no
+                }
+                margin = { -12% -12% }
+                using = highlighted_circle_selection_big
+            }
+        }
     }
 
     type gacha_rarity_text = vbox {

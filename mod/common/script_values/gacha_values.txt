@@ -1,6 +1,8 @@
 ﻿gacha_struct_ball = 1
 gacha_struct_type = 2
 
+gacha_combination_count = 3
+
 # Rarity Multipliers
 # = Rarities are multipliers for the underlying
 # = static modifier. Modify these values to balance results

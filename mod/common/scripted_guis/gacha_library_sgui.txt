@@ -5,6 +5,28 @@
         gacha_item
     }
 
+    is_valid = {
+        OR = {
+            # No combination active
+            any_in_list = {
+                variable = gacha_combinator
+                count = 0
+            }
+            # Combination active
+            AND = {
+                any_in_list = {
+                    variable = gacha_combinator
+                    var:gacha_type = scope:gacha_item.var:gacha_type
+                    var:gacha_rarity = scope:gacha_item.var:gacha_rarity
+                }
+                any_in_list = {
+                    variable = gacha_combinator
+                    count < gacha_combination_count
+                }
+            }
+        }
+    }
+
     is_shown = {
         var:gacha_selected ?= scope:gacha_item
     }
@@ -61,5 +83,174 @@ sgui_gacha_deactivate = {
             slot = gacha_active_three
             boon = scope:gacha_item
         }
+    }
+}
+
+sgui_gacha_combine_add = {
+    scope = Country
+
+    saved_scopes = {
+        gacha_item
+    }
+
+    is_shown = {
+        OR = {
+            NOT = {
+                is_target_in_variable_list = {
+                    name = gacha_combinator
+                    target = scope:gacha_item
+                }
+            }
+            any_in_list = {
+                variable = gacha_combinator
+                count = 0
+            }
+        }
+    }
+
+    is_valid = {
+        OR = {
+            # No combination active
+            any_in_list = {
+                variable = gacha_combinator
+                count = 0
+            }
+            # Combination active
+            AND = {
+                any_in_list = {
+                    variable = gacha_combinator
+                    var:gacha_type = scope:gacha_item.var:gacha_type
+                    var:gacha_rarity = scope:gacha_item.var:gacha_rarity
+                }
+                any_in_list = {
+                    variable = gacha_combinator
+                    count < gacha_combination_count
+                }
+            }
+        }
+        NOR = {
+            var:gacha_active_one ?= scope:gacha_item
+            var:gacha_active_two ?= scope:gacha_item
+            var:gacha_active_three ?= scope:gacha_item
+        }
+    }
+
+    effect = {
+        add_to_variable_list = {
+            name = gacha_combinator
+            target = scope:gacha_item
+        }
+    }
+}
+
+sgui_gacha_combine_remove = {
+    scope = Country
+
+    saved_scopes = {
+        gacha_item
+    }
+
+    is_shown = {
+        any_in_list = {
+            variable = gacha_combinator
+            this = scope:gacha_item
+        }
+    }
+
+    effect = {
+        remove_list_variable = {
+            name = gacha_combinator
+            target = scope:gacha_item
+        }
+    }
+}
+
+sgui_gacha_combine_clear = {
+    scope = Country
+
+    effect = {
+        clear_variable_list = gacha_combinator
+    }
+}
+
+sgui_gacha_combine = {
+    scope = Country
+
+    is_valid = {
+        any_in_list = {
+            variable = gacha_combinator
+            count = 3
+        }
+    }
+
+    effect = {
+        random_in_list = {
+            variable = gacha_combinator
+            save_scope_as = combined_gacha
+        }
+        remove_list_variable = {
+            name = gacha_combinator
+            target = scope:combined_gacha
+        }
+        increase_gacha_rarity = {
+            gacha = scope:combined_gacha
+        }
+        every_in_list = {
+            variable = gacha_combinator
+            prev = {
+                remove_list_variable = {
+                    name = gacha_library
+                    target = prev
+                }
+                remove_list_variable = {
+                    name = gacha_library_common
+                    target = prev
+                }
+                remove_list_variable = {
+                    name = gacha_library_uncommon
+                    target = prev
+                }
+                remove_list_variable = {
+                    name = gacha_library_rare
+                    target = prev
+                }
+                remove_list_variable = {
+                    name = gacha_library_epic
+                    target = prev
+                }
+                remove_list_variable = {
+                    name = gacha_library_legendary
+                    target = prev
+                }
+                remove_list_variable = {
+                    name = gacha_combinator
+                    target = prev
+                }
+            }
+            destroy_struct = {
+                struct = this
+            }
+        }
+        clear_variable_list = gacha_combinator
+        set_variable = {
+            name = gacha_combine_result
+            value = scope:combined_gacha
+        }
+        set_variable = {
+            name = gacha_selected
+            value = scope:combined_gacha
+        }
+    }
+}
+
+sgui_gacha_combine_result = {
+    scope = Country
+
+    is_shown = {
+        has_variable = gacha_combine_result
+    }
+
+    effect = {
+        remove_variable = gacha_combine_result
     }
 }

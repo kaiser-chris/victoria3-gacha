@@ -270,6 +270,75 @@ types gacha_popups {
         blockoverride "popup_button_action" {}
     }
 
+    type gacha_combine_result_popup = gacha_popup_window {
+        datacontext = "[GetScriptedGui('sgui_gacha_combine_result')]"
+        blockoverride "popup_size" {
+            size = { 700 550 }
+        }
+        blockoverride "popup_visibility" {
+            visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(Country.MakeScope).End)]"
+        }
+        blockoverride "popup_title" {
+            text = gacha_pull_result_combine_title
+        }
+        blockoverride "popup_content" {
+            widget = {
+                parentanchor = top|left
+                size = { 456 510 }
+
+                widget = {
+                    datacontext = "[Country.MakeScope.Var('gacha_combine_result').Var('gacha_type')]"
+                    parentanchor = top|left
+                    size = { 100% 256 }
+                    textbox = {
+                        text = "[Scope.Var('gacha_type_name').GetFlagName]"
+                        autoresize = yes
+                        multiline = yes
+                        margin = { 20 10 }
+                        parentanchor = center
+                        background = {
+                            using = entry_bg_fancy_dark
+                        }
+                        default_format = "#header"
+                        using = fontsize_large
+                    }
+                }
+
+                widget = {
+                    position = { 100 150 }
+                    parentanchor = top|left
+                    size = { 256 256 }
+
+                    gacha_ball = {
+                        blockoverride "gacha_context" {
+                            datacontext = "[Country.MakeScope.Var('gacha_combine_result')]"
+                        }
+                    }
+                }
+
+                hbox = {
+                    parentanchor = bottom|hcenter
+                    maximumsize = { 320 80 }
+                    button = {
+                        size = { 320 40 }
+                        using = default_button_primary
+                        text = gacha_pull_result_close
+                        onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
+                    }
+                }
+            }
+            icon = {
+                position = { -30 -10 }
+                parentanchor = bottom|right
+                size = { 300 480 }
+                texture = "gfx/interface/gacha/victoria.dds"
+            }
+        }
+        blockoverride "popup_button_onclick" {
+            onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
+        }
+    }
+
     type gacha_pull_button = button {
         size = { 362 450 }
         onmousehierarchyenter = "[PdxGuiWidget.FindChild('gacha_pull_button').InterruptThenTriggerAnimation('gacha_pull_button_normal','gacha_pull_button_hover')]"

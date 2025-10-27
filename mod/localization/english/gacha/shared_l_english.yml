@@ -3,12 +3,16 @@
  dlc_gacha_desc: "Gacha in Victoria 3."
  gacha_empty: "Empty"
  concept_gacha_buff_simple: "Boon"
+ concept_gacha_buffs_simple: "Boons"
  concept_gacha_buff: "Her Majesty's Boon"
  concept_gacha_buffs: "Her Majesty's Boons"
  concept_gacha_buff_desc: "TODO" #TODO
  concept_gacha_type_simple: "Type"
  concept_gacha_type: "Boon Type"
  concept_gacha_type_desc: "TODO" #TODO
+ concept_gacha_rarity_simple: "Rarity"
+ concept_gacha_rarity: "Boon Rarity"
+ concept_gacha_rarity_desc: "TODO" #TODO
 # Rarities
  gacha_rarity_unknown: "Unknown"
  gacha_rarity_common: "#gacha_common Common#!"

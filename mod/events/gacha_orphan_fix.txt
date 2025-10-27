@@ -36,6 +36,7 @@ gacha_orphan_fix.1 = {
 
         # Misc
         fix_variable_error = { variable = gacha_type_name }
+        fix_variable_error = { variable = gacha_combine_result }
 
 	}
 	

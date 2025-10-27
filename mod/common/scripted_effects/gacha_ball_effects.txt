@@ -180,3 +180,82 @@ pull_gacha = {
         rarity = gacha_random_rarity
     }
 }
+
+increase_gacha_rarity = {
+    if = {
+        limit = {
+            $gacha$.var:gacha_rarity = gacha_rarity_common
+        }
+        remove_list_variable = {
+            name = gacha_library_common
+            target = $gacha$
+        }
+        add_to_variable_list = {
+            name = gacha_library_uncommon
+            target = $gacha$
+        }
+        $gacha$ = {
+            set_variable = {
+                name = gacha_rarity
+                value = gacha_rarity_uncommon
+            }
+        }
+    }
+    else_if = {
+        limit = {
+            $gacha$.var:gacha_rarity = gacha_rarity_uncommon
+        }
+        remove_list_variable = {
+            name = gacha_library_uncommon
+            target = $gacha$
+        }
+        add_to_variable_list = {
+            name = gacha_library_rare
+            target = $gacha$
+        }
+        $gacha$ = {
+            set_variable = {
+                name = gacha_rarity
+                value = gacha_rarity_rare
+            }
+        }
+    }
+    else_if = {
+        limit = {
+            $gacha$.var:gacha_rarity = gacha_rarity_rare
+        }
+        remove_list_variable = {
+            name = gacha_library_rare
+            target = $gacha$
+        }
+        add_to_variable_list = {
+            name = gacha_library_epic
+            target = $gacha$
+        }
+        $gacha$ = {
+            set_variable = {
+                name = gacha_rarity
+                value = gacha_rarity_epic
+            }
+        }
+    }
+    else_if = {
+        limit = {
+            $gacha$.var:gacha_rarity = gacha_rarity_epic
+        }
+        remove_list_variable = {
+            name = gacha_library_epic
+            target = $gacha$
+        }
+        add_to_variable_list = {
+            name = gacha_library_legendary
+            target = $gacha$
+        }
+        $gacha$ = {
+            set_variable = {
+                name = gacha_rarity
+                value = gacha_rarity_legendary
+            }
+        }
+    }
+}

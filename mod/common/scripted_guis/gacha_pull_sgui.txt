@@ -57,9 +57,6 @@ sgui_gacha_pull_result = {
     }
 
     effect = {
-        apply_gacha_ball = {
-            ball = var:gacha_result
-        }
         remove_variable = gacha_result
     }
 }
