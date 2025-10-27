@@ -23,5 +23,43 @@
             }
         }
     }
+}
 
+sgui_gacha_active = {
+    scope = Country
+
+    saved_scopes = {
+        gacha_item
+    }
+
+    is_shown = {
+        OR = {
+            var:gacha_active_one ?= scope:gacha_item
+            var:gacha_active_two ?= scope:gacha_item
+            var:gacha_active_three ?= scope:gacha_item
+        }
+    }
+}
+
+sgui_gacha_deactivate = {
+    scope = Country
+
+    saved_scopes = {
+        gacha_item
+    }
+
+    effect = {
+        remove_conflicting_gacha_ball = {
+            slot = gacha_active_one
+            boon = scope:gacha_item
+        }
+        remove_conflicting_gacha_ball = {
+            slot = gacha_active_two
+            boon = scope:gacha_item
+        }
+        remove_conflicting_gacha_ball = {
+            slot = gacha_active_three
+            boon = scope:gacha_item
+        }
+    }
 }

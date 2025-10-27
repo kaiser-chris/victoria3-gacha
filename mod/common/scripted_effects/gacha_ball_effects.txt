@@ -119,12 +119,15 @@ activate_gacha_ball = {
         # Remove selected boon from other slots
         remove_conflicting_gacha_ball = {
             slot = gacha_active_one
+            boon = var:gacha_selected
         }
         remove_conflicting_gacha_ball = {
             slot = gacha_active_two
+            boon = var:gacha_selected
         }
         remove_conflicting_gacha_ball = {
             slot = gacha_active_three
+            boon = var:gacha_selected
         }
 
         # Activate selected boon
@@ -142,12 +145,12 @@ remove_conflicting_gacha_ball = {
     if = {
         limit = {
             OR = {
-                var:$slot$ ?= var:gacha_selected
+                var:$slot$ ?= $boon$
                 trigger_if = {
                     limit = {
                         exists = var:$slot$
                     }
-                    var:$slot$.var:gacha_type = var:gacha_selected.var:gacha_type
+                    var:$slot$.var:gacha_type = $boon$.var:gacha_type
                 }
             }
         }

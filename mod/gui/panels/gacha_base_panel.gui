@@ -393,6 +393,7 @@ types gacha_base_panel_types {
                 textbox = {
                     size = { 15 20 }
                     raw_text = "[Country.MakeScope.ScriptValue('gacha_rarity_count_all')]"
+                    default_format = "#v"
                     align = right
                 }
             }
@@ -414,6 +415,7 @@ types gacha_base_panel_types {
                 textbox = {
                     size = { 15 20 }
                     raw_text = "[Country.MakeScope.ScriptValue('gacha_rarity_common_count')]"
+                    default_format = "#v"
                     align = right
                 }
             }
@@ -435,6 +437,7 @@ types gacha_base_panel_types {
                 textbox = {
                     size = { 15 20 }
                     raw_text = "[Country.MakeScope.ScriptValue('gacha_rarity_uncommon_count')]"
+                    default_format = "#v"
                     align = right
                 }
             }
@@ -456,6 +459,7 @@ types gacha_base_panel_types {
                 textbox = {
                     size = { 15 20 }
                     raw_text = "[Country.MakeScope.ScriptValue('gacha_rarity_rare_count')]"
+                    default_format = "#v"
                     align = right
                 }
             }
@@ -477,6 +481,7 @@ types gacha_base_panel_types {
                 textbox = {
                     size = { 15 20 }
                     raw_text = "[Country.MakeScope.ScriptValue('gacha_rarity_epic_count')]"
+                    default_format = "#v"
                     align = right
                 }
             }
@@ -499,6 +504,7 @@ types gacha_base_panel_types {
                 textbox = {
                     size = { 15 20 }
                     raw_text = "[Country.MakeScope.ScriptValue('gacha_rarity_legendary_count')]"
+                    default_format = "#v"
                     align = right
                 }
             }
@@ -564,6 +570,22 @@ types gacha_base_panel_types {
             margin = { 20 20 }
             spacing = 20
 
+            textbox = {
+                visible = "[GetScriptedGui('sgui_gacha_active').IsShown(GuiScope
+                    .SetRoot(Country.MakeScope)
+                    .AddScope('gacha_item', Scope.GetCharacter.MakeScope)
+                    .End
+                )]"
+                margin = { 20 20 }
+                autoresize = yes
+                multiline = yes
+                align = center
+                text = gacha_panel_tab_library_sidebar_active
+                background = {
+                    using = entry_bg
+                }
+            }
+
             vbox = {
                 textbox = {
                     maximumsize = { 256 -1 }
@@ -615,9 +637,32 @@ types gacha_base_panel_types {
 
             button = {
                 using = default_button_primary_action
+                visible = "[Not(GetScriptedGui('sgui_gacha_active').IsShown(GuiScope
+                    .SetRoot(Country.MakeScope)
+                    .AddScope('gacha_item', Scope.GetCharacter.MakeScope)
+                    .End
+                ))]"
+                tooltip = gacha_panel_tab_library_sidebar_activate_tooltip
                 size = { 200 44 }
                 text = gacha_panel_tab_library_sidebar_activate
                 onclick = "[GetVariableSystem.Set('com_open_window', 'gacha_activate_popup')]"
+            }
+
+            button = {
+                using = default_button_primary_action
+                visible = "[GetScriptedGui('sgui_gacha_active').IsShown(GuiScope
+                    .SetRoot(Country.MakeScope)
+                    .AddScope('gacha_item', Scope.GetCharacter.MakeScope)
+                    .End
+                )]"
+                tooltip = gacha_panel_tab_library_sidebar_deactivate_tooltip
+                size = { 200 44 }
+                text = gacha_panel_tab_library_sidebar_deactivate
+                onclick = "[GetScriptedGui('sgui_gacha_deactivate').Execute(GuiScope
+                    .SetRoot(Country.MakeScope)
+                    .AddScope('gacha_item', Scope.GetCharacter.MakeScope)
+                    .End
+                )]"
             }
         }
 

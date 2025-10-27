@@ -20,6 +20,8 @@ types gacha_popups {
                 margin_top = 60
                 spacing = 20
 
+                gacha_pull_button = {}
+
                 widget = {
                     size = { 362 450 }
                     vbox = {
@@ -179,8 +181,6 @@ types gacha_popups {
                         }
                     }
                 }
-
-                gacha_pull_button = {}
             }
         }
         blockoverride "popup_button_onclick" {
@@ -203,7 +203,7 @@ types gacha_popups {
         blockoverride "popup_content" {
             widget = {
                 parentanchor = top|left
-                size = { 456 500 }
+                size = { 456 510 }
 
                 widget = {
                     datacontext = "[Country.MakeScope.Var('gacha_result').Var('gacha_type')]"
@@ -224,7 +224,7 @@ types gacha_popups {
                 }
 
                 widget = {
-                    position = { 100 160 }
+                    position = { 100 150 }
                     parentanchor = top|left
                     size = { 256 256 }
 
@@ -235,27 +235,25 @@ types gacha_popups {
                     }
                 }
 
-                widget = {
+                hbox = {
                     datacontext = "[Country.MakeScope.Var('gacha_result').Var('gacha_type')]"
-                    parentanchor = bottom|left
-                    size = { 100% 50 }
-                    flowcontainer = {
-                        parentanchor = center
-                        spacing = 20
-                        button = {
-                            size = { 150 40 }
-                            using = default_button_action
-                            text = gacha_pull_result_library
-                            onclick = "[GetVariableSystem.Set('gacha_panel_tab', 'library')]"
-                            onclick = "[GetVariableSystem.Set('com_open_window', 'gacha_button_main')]"
-                            onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
-                        }
-                        button = {
-                            size = { 150 40 }
-                            using = default_button_action
-                            text = gacha_pull_result_close
-                            onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
-                        }
+                    parentanchor = bottom|hcenter
+                    maximumsize = { 320 80 }
+                    spacing = 20
+                    button = {
+                        size = { 150 40 }
+                        using = default_button_primary_action
+                        text = gacha_pull_again
+                        onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
+                        onclick = "[GetVariableSystem.Set('com_open_window', 'gacha_pull_popup')]"
+                    }
+                    button = {
+                        size = { 150 40 }
+                        using = default_button_primary
+                        text = gacha_pull_result_library
+                        onclick = "[GetVariableSystem.Set('gacha_panel_tab', 'library')]"
+                        onclick = "[GetVariableSystem.Set('com_open_window', 'gacha_button_main')]"
+                        onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
                     }
                 }
             }
@@ -269,6 +267,7 @@ types gacha_popups {
         blockoverride "popup_button_onclick" {
             onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(Country.MakeScope).End)]"
         }
+        blockoverride "popup_button_action" {}
     }
 
     type gacha_pull_button = button {
