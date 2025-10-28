@@ -1,0 +1,10 @@
+﻿l_spanish:
+ gacha_ball_pull_cost: "Paid Pull"
+# Gacha Types
+ gacha_ball_modifier_industry: "Boon: Industry"
+ gacha_ball_modifier_environment: "Boon: Environment"
+ gacha_ball_modifier_culture: "Boon: Culture"
+ gacha_ball_modifier_knowledge: "Boon: Knowledge"
+ gacha_ball_modifier_society: "Boon: Society"
+ gacha_ball_modifier_war: "Boon: War"
+ gacha_ball_modifier_religion: "Boon: Religion"

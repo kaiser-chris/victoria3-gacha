@@ -1,0 +1,9 @@
+﻿l_braz_por:
+ ag_gacha_alerts_name: "$dlc_gacha$ Alerts"
+ ag_gacha_alerts_desc: "These are alerts from the mod #header $dlc_gacha$#!"
+ ag_gacha_alerts_tooltip: "These are alerts from the mod #header $dlc_gacha$#!"
+ alert_alert_gacha_has_free_pull_name: "Free Boons"
+ alert_alert_gacha_has_free_pull_desc: "We have free pulls for new [Concept('concept_gacha_buff', '$concept_gacha_buffs_simple$')]."
+ alert_alert_gacha_has_free_pull_hint: "You can use your free pulls in the $gacha_panel_base_action$."
+ alert_alert_gacha_has_free_pull_action: "$gacha_panel_base_action$"
+ alert_gacha_has_free_pull_setting_name: "Free [Concept('concept_gacha_buff', '$concept_gacha_buff_simple$')] pulls"

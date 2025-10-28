@@ -1,0 +1,13 @@
+﻿l_braz_por:
+ gacha_pull_title: "Pull a new Boon"
+ gacha_pull_rates: "Pull Rates"
+ gacha_pull_free: "Remaining Free Pulls"
+ gacha_pull_cost: "Pull Cost"
+ gacha_pull_cost_free: "Free"
+ gacha_pull_cost_money: "@money![Country.MakeScope.ScriptValue('money_amount_multiplier_small')|-0] per month for a year"
+ gacha_pull_cancel: "Back"
+ gacha_pull_again: "Pull Again"
+ gacha_pull_result_title: "New Boon"
+ gacha_pull_result_combine_title: "New Combined Boon"
+ gacha_pull_result_library: "Library"
+ gacha_pull_result_close: "Close"

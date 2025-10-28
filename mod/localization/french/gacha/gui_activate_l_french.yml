@@ -1,0 +1,5 @@
+﻿l_french:
+ gacha_activate_title: "Activate Boon"
+ gacha_activate_description: "Select a [Concept('concept_gacha_buff', '$concept_gacha_buff_simple$')] to replace. Only one [Concept('concept_gacha_buff', '$concept_gacha_buff_simple$')] of a specific [concept_gacha_type] can be active at the same time."
+ gacha_activate_back: "Back"
+ gacha_activate_close: "Cancel"

@@ -1,0 +1,5 @@
+﻿l_german:
+ gacha_introduction_title: "$gacha_panel_base_title$"
+ gacha_introduction_explain_title: "Explanation"
+ gacha_introduction_explain_body: "#v $gacha_panel_base_title$#! adds #v Gacha#! to #v Victoria 3#!.\n\nEvery year you will get #v 1#! free pull for a new [Concept('concept_gacha_buff', '$concept_gacha_buff_simple$')].\nEach activated [Concept('concept_gacha_buff', '$concept_gacha_buff_simple$')] provides a buff to your country.\nAdditionally you can also #v pay#! for pulling new [Concept('concept_gacha_buff', '$concept_gacha_buffs_simple$')].\n\nThere are five rarities of [Concept('concept_gacha_buff', '$concept_gacha_buffs_simple$')]:\n  • [Concept('concept_gacha_common', Localize('gacha_rarity_common'))]\n  • [Concept('concept_gacha_uncommon', Localize('gacha_rarity_uncommon'))]\n  • [Concept('concept_gacha_rare', Localize('gacha_rarity_rare'))]\n  • [Concept('concept_gacha_epic', Localize('gacha_rarity_epic'))]\n  • [Concept('concept_gacha_legendary', Localize('gacha_rarity_legendary'))]"
+ gacha_introduction_start: "Let's GO"

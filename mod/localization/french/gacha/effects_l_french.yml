@@ -1,0 +1,2 @@
+﻿l_french:
+ effect_add_gacha_free_pulls: "Add [TopScope.GetValue('gacha_free_pull_amount')|0v] free pulls for new [Concept('concept_gacha_buff', '$concept_gacha_buffs_simple$')]"
