@@ -3,6 +3,16 @@ gacha_struct_type = 2
 
 gacha_combination_count = 3
 
+gacha_free_pulls = {
+    value = 0
+    if = {
+        limit = {
+            exists = var:gacha_free_pulls
+        }
+        add = var:gacha_free_pulls
+    }
+}
+
 # Rarity Multipliers
 # = Rarities are multipliers for the underlying
 # = static modifier. Modify these values to balance results

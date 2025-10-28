@@ -2,6 +2,7 @@
     scope = country
 
     effect = {
+        add_pull_cost = yes
         pull_gacha = {
             scope = gacha_result
         }
@@ -107,6 +108,22 @@ sgui_gacha_pull_legendary = {
     is_shown = {
         var:gacha_result ?= {
             var:gacha_rarity ?= gacha_rarity_legendary
+        }
+    }
+}
+
+sgui_gacha_free_pull = {
+    scope = country
+
+    is_shown = {
+        trigger_if = {
+            limit = {
+                exists = var:gacha_free_pulls
+            }
+            var:gacha_free_pulls > 0
+        }
+        trigger_else = {
+            always = no
         }
     }
 }

@@ -259,3 +259,51 @@ increase_gacha_rarity = {
         }
     }
 }
+
+add_pull_cost = {
+    if = {
+        limit = {
+            NOT = {
+                exists = var:gacha_free_pulls
+            }
+        }
+        set_variable = {
+            name = gacha_free_pulls
+            value = 0
+        }
+    }
+
+    if = {
+        limit = {
+            var:gacha_free_pulls > 0
+        }
+        change_variable = {
+            name = gacha_free_pulls
+            subtract = 1
+        }
+    }
+    else = {
+        add_modifier = {
+            name = gacha_ball_pull_cost
+            multiplier = money_amount_multiplier_small
+        }
+    }
+}
+
+add_gacha_free_pulls = {
+    if = {
+        limit = {
+            NOT = {
+                exists = var:gacha_free_pulls
+            }
+        }
+        set_variable = {
+            name = gacha_free_pulls
+            value = 0
+        }
+    }
+    change_variable = {
+        name = gacha_free_pulls
+        add = $amount$
+    }
+}

@@ -6,6 +6,13 @@ on_monthly_pulse = {
     }
 }
 
+# Root = any
+on_yearly_pulse_country = {
+    on_actions = {
+        on_add_gacha_free_pulls
+    }
+}
+
 on_monthly_gacha_ui_check = {
     effect = {
         add_gacha_main_button = yes
@@ -21,5 +28,16 @@ on_game_started = {
 on_create_gacha_types = {
     effect = {
         create_gacha_types = yes
+    }
+}
+
+on_add_gacha_free_pulls = {
+    trigger = {
+        is_player = yes
+    }
+    effect = {
+        add_gacha_free_pulls = {
+            amount = 1
+        }
     }
 }

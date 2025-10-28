@@ -9,6 +9,7 @@
  gacha_panel_tab_main: "Active Boons"
  gacha_panel_tab_main_statistics: "Statistics"
  gacha_panel_tab_main_statistics_all: "Total"
+ gacha_panel_tab_main_statistics_free_pulls: "Free Pulls"
  gacha_panel_tab_main_pull_button: "Ask for a new Boon"
  gacha_panel_tab_library: "Library"
  gacha_panel_tab_library_sidebar: "Selected Boon"

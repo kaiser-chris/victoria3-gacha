@@ -1,4 +1,10 @@
-﻿gacha_ball_modifier_industry = {
+﻿gacha_ball_pull_cost = {
+    icon = "gfx/interface/icons/timed_modifier_icons/modifier_income_negative.dds"
+    country_expenses_add = 1
+}
+
+# Gacha Types
+gacha_ball_modifier_industry = {
 	icon = "gfx/interface/icons/ig_icons/industrialists.dds"
 	state_capitalists_investment_pool_efficiency_mult = 0.05
 }

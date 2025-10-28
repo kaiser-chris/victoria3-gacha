@@ -386,6 +386,27 @@ types gacha_base_panel_types {
                     layoutpolicy_horizontal = expanding
                     autoresize = yes
                     multiline = yes
+                    text = gacha_panel_tab_main_statistics_free_pulls
+                    default_format = "#v"
+                    align = left
+                }
+                textbox = {
+                    size = { 15 20 }
+                    raw_text = "[Country.MakeScope.ScriptValue('gacha_free_pulls')]"
+                    default_format = "#v"
+                    align = right
+                }
+            }
+
+            divider_decorative = {}
+
+            hbox = {
+                layoutpolicy_horizontal = expanding
+                spacing = 10
+                textbox = {
+                    layoutpolicy_horizontal = expanding
+                    autoresize = yes
+                    multiline = yes
                     text = gacha_panel_tab_main_statistics_all
                     default_format = "#v"
                     align = left
