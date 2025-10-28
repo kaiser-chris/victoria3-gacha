@@ -1,1 +1,20 @@
-{"name":"[1.11] Gacha: Her Majesty's Boons","id":"com.github.kaiser-chris.gacha","version":"0.1.0","game_id":"victoria3","supported_game_version":"1.*","short_description":"Gacha in Victoria 3","tags":["1.11"],"relationships":[{"rel_type":"dependency","id":"com.github.Victoria-3-Modding-Co-op.Community-Mod-Framework","display_name":"Community Mod Framework","resource_type":"mod","version":"1.*"}]}
+{
+  "name": "[1.11] Gacha: Her Majesty's Boons",
+  "id": "com.github.kaiser-chris.gacha",
+  "version": "0.1.0",
+  "game_id": "victoria3",
+  "supported_game_version": "1.*",
+  "short_description": "Gacha in Victoria 3",
+  "tags": [
+    "1.11"
+  ],
+  "relationships": [
+    {
+      "rel_type": "dependency",
+      "id": "com.github.Victoria-3-Modding-Co-op.Community-Mod-Framework",
+      "display_name": "Community Mod Framework",
+      "resource_type": "mod",
+      "version": "1.*"
+    }
+  ]
+}
