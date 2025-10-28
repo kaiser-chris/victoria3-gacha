@@ -1,8 +1,8 @@
 # Overview
-**Gacha!** is a mod for Victoria 3.
+**Gacha: Her Majesty's Boons** is a mod for Victoria 3.
 
 ## Steam Page
- - TBD
+ - https://steamcommunity.com/sharedfiles/filedetails/?id=3595312075
 
 ## Status
 [![Validation](https://github.com/kaiser-chris/victoria3-gacha/actions/workflows/validate.yml/badge.svg)](https://github.com/kaiser-chris/victoria3-gacha/actions/workflows/validate.yml)
