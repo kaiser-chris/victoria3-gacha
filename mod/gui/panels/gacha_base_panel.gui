@@ -4,7 +4,10 @@ types gacha_base_panel_types {
         name = "gacha_base_panel"
         datacontext = "[GetMetaPlayer.GetPlayedOrObservedCountry]"
 
-        visible = "[GetVariableSystem.HasValue('com_open_window', 'gacha_button_main')]"
+        visible = "[Or(
+            GetVariableSystem.HasValue('com_open_window', 'gacha_button_main'),
+            GetVariableSystem.HasValue('com_alert_action', Localize('gacha_panel_base_action'))
+        )]"
 
         blockoverride "animation_state_block" {
             state = {
@@ -391,14 +394,22 @@ types gacha_base_panel_types {
                     align = left
                 }
                 textbox = {
-                    size = { 15 20 }
-                    raw_text = "[Country.MakeScope.ScriptValue('gacha_free_pulls')]"
-                    default_format = "#v"
+                    visible = "[Not(GetScriptedGui('sgui_gacha_free_pull').IsShown(GuiScope.SetRoot(Country.MakeScope).End))]"
+                    raw_text = "[Country.MakeScope.ScriptValue('gacha_free_pulls')|0]"
+                    default_format = "#v;r"
+                    align = right
+                }
+                textbox = {
+                    visible = "[GetScriptedGui('sgui_gacha_free_pull').IsShown(GuiScope.SetRoot(Country.MakeScope).End)]"
+                    raw_text = "[Country.MakeScope.ScriptValue('gacha_free_pulls')|0]"
+                    default_format = "#v;g"
                     align = right
                 }
             }
 
-            divider_decorative = {}
+            divider_decorative = {
+                layoutpolicy_horizontal = expanding
+            }
 
             hbox = {
                 layoutpolicy_horizontal = expanding

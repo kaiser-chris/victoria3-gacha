@@ -1,0 +1,22 @@
+﻿alert_gacha_has_free_pull = {
+	script_context = player_country
+	texture = gfx/interface/icons/alert_icons/gacha_alert.dds
+
+	valid = {
+        trigger_if = {
+            limit = {
+                exists = var:gacha_free_pulls
+            }
+            var:gacha_free_pulls > 0
+        }
+        trigger_else = {
+            always = no
+        }
+	}
+
+	type = alert
+
+	alert_group = gacha_alerts
+
+	color = green
+}

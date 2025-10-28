@@ -2,12 +2,18 @@
     scope = country
 
     is_shown = {
+        is_player = yes
         NOT = {
-            has_global_variable = gacha_introduction_finished
+            has_variable = gacha_introduction_finished
         }
     }
 
     effect = {
-        set_global_variable = gacha_introduction_finished
+        add_gacha_free_pulls = {
+            amount = 3
+        }
+        hidden_effect = {
+            set_variable = gacha_introduction_finished
+        }
     }
 }

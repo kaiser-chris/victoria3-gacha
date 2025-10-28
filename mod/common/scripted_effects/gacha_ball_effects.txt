@@ -286,24 +286,32 @@ add_pull_cost = {
         add_modifier = {
             name = gacha_ball_pull_cost
             multiplier = money_amount_multiplier_small
+            years = 1
         }
     }
 }
 
 add_gacha_free_pulls = {
-    if = {
-        limit = {
-            NOT = {
-                exists = var:gacha_free_pulls
+    custom_tooltip = {
+        text = effect_add_gacha_free_pulls
+        save_scope_value_as = {
+            name = gacha_free_pull_amount
+            value = $amount$
+        }
+        if = {
+            limit = {
+                NOT = {
+                    exists = var:gacha_free_pulls
+                }
+            }
+            set_variable = {
+                name = gacha_free_pulls
+                value = 0
             }
         }
-        set_variable = {
+        change_variable = {
             name = gacha_free_pulls
-            value = 0
+            add = $amount$
         }
-    }
-    change_variable = {
-        name = gacha_free_pulls
-        add = $amount$
     }
 }

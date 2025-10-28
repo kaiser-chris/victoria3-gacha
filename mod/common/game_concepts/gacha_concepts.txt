@@ -1,17 +1,14 @@
 ﻿concept_gacha_buff = {
-    # TODO: Better icon
     texture = "gfx/interface/gacha/balls/gacha_ball_gold.dds"
     is_loading_tip = yes
 }
 
 concept_gacha_type = {
-    # TODO: Better icon
     texture = "gfx/interface/gacha/balls/gacha_ball_gold.dds"
     is_loading_tip = yes
 }
 
 concept_gacha_rarity = {
-    # TODO: Better icon
     texture = "gfx/interface/gacha/balls/gacha_ball_gold.dds"
     is_loading_tip = yes
 }

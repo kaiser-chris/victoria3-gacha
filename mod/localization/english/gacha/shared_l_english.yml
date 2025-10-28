@@ -6,13 +6,15 @@
  concept_gacha_buffs_simple: "Boons"
  concept_gacha_buff: "Her Majesty's Boon"
  concept_gacha_buffs: "Her Majesty's Boons"
- concept_gacha_buff_desc: "TODO" #TODO
+ concept_gacha_buff_desc: "Boons can be of different [Concept('concept_gacha_type', '$concept_gacha_types_simple$')] and [Concept('concept_gacha_rarity', '$concept_gacha_rarities_simple$')]. You will receive #v 1#! free pull for a new Boon every year."
  concept_gacha_type_simple: "Type"
+ concept_gacha_types_simple: "Types"
  concept_gacha_type: "Boon Type"
- concept_gacha_type_desc: "TODO" #TODO
+ concept_gacha_type_desc: "Each type of [Concept('concept_gacha_buff', '$concept_gacha_buffs_simple$')] provides a different advantage to your country. Higher [Concept('concept_gacha_rarity', '$concept_gacha_rarities_simple$')] provide better buffs."
  concept_gacha_rarity_simple: "Rarity"
+ concept_gacha_rarities_simple: "Rarities"
  concept_gacha_rarity: "Boon Rarity"
- concept_gacha_rarity_desc: "TODO" #TODO
+ concept_gacha_rarity_desc: "There are five rarities of [Concept('concept_gacha_buff', '$concept_gacha_buffs_simple$')]:\n  • [Concept('concept_gacha_common', Localize('gacha_rarity_common'))]\n  • [Concept('concept_gacha_uncommon', Localize('gacha_rarity_uncommon'))]\n  • [Concept('concept_gacha_rare', Localize('gacha_rarity_rare'))]\n  • [Concept('concept_gacha_epic', Localize('gacha_rarity_epic'))]\n  • [Concept('concept_gacha_legendary', Localize('gacha_rarity_legendary'))]"
 # Rarities
  gacha_rarity_unknown: "Unknown"
  gacha_rarity_common: "#gacha_common Common#!"

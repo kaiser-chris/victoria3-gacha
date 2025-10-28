@@ -1,9 +1,9 @@
 ﻿l_english:
 # Button
  gacha_button_main: "gacha_button_main"
- gacha_button_main_desc: "$gacha_panel_base_title$"
+ gacha_button_main_desc: "Majesty's Boons"
  gacha_button_main_tooltip: "#header $gacha_panel_base_title$#!\nShortcut: #V $gacha_panel_base_action$#! (#V CTRL + G#!)"
- gacha_panel_base_action: "Her Majesty's Boons"
+ gacha_panel_base_action: "Boon Panel"
 # Panel
  gacha_panel_base_title: "Her Majesty's Boons"
  gacha_panel_tab_main: "Active Boons"
