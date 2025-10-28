@@ -13,3 +13,30 @@ gacha_ball_modifier_environment = {
     icon = "gfx/interface/icons/ig_icons/rural_folk.dds"
     state_pollution_reduction_health_mult = -0.05
 }
+
+gacha_ball_modifier_culture = {
+    icon = "gfx/interface/icons/ig_icons/petty_bourgeoisie.dds"
+    state_assimilation_mult = 0.05
+}
+
+gacha_ball_modifier_knowledge = {
+    icon = "gfx/interface/icons/ig_icons/intelligensia.dds"
+    country_weekly_innovation_max_add = 5
+}
+
+gacha_ball_modifier_society = {
+    icon = "gfx/interface/icons/ig_icons/trade_unions.dds"
+    state_standard_of_living_add = 0.5
+}
+
+gacha_ball_modifier_war = {
+    icon = "gfx/interface/icons/ig_icons/armed_forces.dds"
+    unit_offense_mult = 0.02
+    unit_defense_mult = 0.02
+    unit_morale_loss_mult = -0.02
+}
+
+gacha_ball_modifier_religion = {
+    icon = "gfx/interface/icons/ig_icons/devout.dds"
+    state_conversion_mult = 0.05
+}

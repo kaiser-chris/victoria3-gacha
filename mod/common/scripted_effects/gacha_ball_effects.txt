@@ -32,12 +32,32 @@ get_gacha_type = {
 
 create_gacha_types = {
     create_gacha_type = {
+        type = gacha_type_industry
+        name = gacha_ball_modifier_industry
+    }
+    create_gacha_type = {
         type = gacha_type_environment
         name = gacha_ball_modifier_environment
     }
     create_gacha_type = {
-        type = gacha_type_industry
-        name = gacha_ball_modifier_industry
+        type = gacha_type_culture
+        name = gacha_ball_modifier_culture
+    }
+    create_gacha_type = {
+        type = gacha_type_knowledge
+        name = gacha_ball_modifier_knowledge
+    }
+    create_gacha_type = {
+        type = gacha_type_society
+        name = gacha_ball_modifier_society
+    }
+    create_gacha_type = {
+        type = gacha_type_war
+        name = gacha_ball_modifier_war
+    }
+    create_gacha_type = {
+        type = gacha_type_religion
+        name = gacha_ball_modifier_religion
     }
 }
 
@@ -87,6 +107,36 @@ apply_gacha_ball = {
         gacha_type_environment = {
             add_modifier = {
                 name = gacha_ball_modifier_environment
+                multiplier = $ball$.var:gacha_rarity
+            }
+        }
+        gacha_type_culture = {
+            add_modifier = {
+                name = gacha_ball_modifier_culture
+                multiplier = $ball$.var:gacha_rarity
+            }
+        }
+        gacha_type_knowledge = {
+            add_modifier = {
+                name = gacha_ball_modifier_knowledge
+                multiplier = $ball$.var:gacha_rarity
+            }
+        }
+        gacha_type_society = {
+            add_modifier = {
+                name = gacha_ball_modifier_society
+                multiplier = $ball$.var:gacha_rarity
+            }
+        }
+        gacha_type_war = {
+            add_modifier = {
+                name = gacha_ball_modifier_war
+                multiplier = $ball$.var:gacha_rarity
+            }
+        }
+        gacha_type_religion = {
+            add_modifier = {
+                name = gacha_ball_modifier_religion
                 multiplier = $ball$.var:gacha_rarity
             }
         }
@@ -169,6 +219,21 @@ unapply_gacha_ball = {
         }
         gacha_type_environment = {
             remove_modifier = gacha_ball_modifier_environment
+        }
+        gacha_type_culture = {
+            remove_modifier = gacha_ball_modifier_culture
+        }
+        gacha_type_knowledge = {
+            remove_modifier = gacha_ball_modifier_knowledge
+        }
+        gacha_type_society = {
+            remove_modifier = gacha_ball_modifier_society
+        }
+        gacha_type_war = {
+            remove_modifier = gacha_ball_modifier_war
+        }
+        gacha_type_religion = {
+            remove_modifier = gacha_ball_modifier_religion
         }
     }
 }

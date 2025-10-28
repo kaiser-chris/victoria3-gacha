@@ -1,6 +1,20 @@
 ﻿gacha_struct_ball = 1
 gacha_struct_type = 2
 
+# Gacha Buff Types
+gacha_type_industry = 1
+gacha_type_environment = 2
+gacha_type_culture = 3
+gacha_type_knowledge = 4
+gacha_type_society = 5
+gacha_type_war = 6
+gacha_type_religion = 7
+gacha_random_type = {
+    # lowest and highest type
+    value = { 1 7 }
+    round_to = 1
+}
+
 gacha_combination_count = 3
 
 gacha_free_pulls = {
@@ -151,13 +165,4 @@ gacha_rarity_legendary_count = {
         }
         add = 1
     }
-}
-
-# Gacha Buff Types
-gacha_type_industry = 1
-gacha_type_environment = 2
-gacha_random_type = {
-    # lowest and highest type
-    value = { 1 2 }
-    round_to = 1
 }

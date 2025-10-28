@@ -3,15 +3,45 @@ types gacha_type_icons {
         parentanchor = center
         size = { 70% 70% }
         gacha_ball_type_icon = {
+            visible = "[IsGachaType('gacha_type_industry')]"
+            blockoverride "color_texture" {
+                texture = "gfx/interface/icons/ig_icons/industrialists.dds"
+            }
+        }
+        gacha_ball_type_icon = {
             visible = "[IsGachaType('gacha_type_environment')]"
             blockoverride "color_texture" {
                 texture = "gfx/interface/icons/ig_icons/rural_folk.dds"
             }
         }
         gacha_ball_type_icon = {
-            visible = "[IsGachaType('gacha_type_industry')]"
+            visible = "[IsGachaType('gacha_type_culture')]"
             blockoverride "color_texture" {
-                texture = "gfx/interface/icons/ig_icons/industrialists.dds"
+                texture = "gfx/interface/icons/ig_icons/petty_bourgeoisie.dds"
+            }
+        }
+        gacha_ball_type_icon = {
+            visible = "[IsGachaType('gacha_type_knowledge')]"
+            blockoverride "color_texture" {
+                texture = "gfx/interface/icons/ig_icons/intelligensia.dds"
+            }
+        }
+        gacha_ball_type_icon = {
+            visible = "[IsGachaType('gacha_type_society')]"
+            blockoverride "color_texture" {
+                texture = "gfx/interface/icons/ig_icons/trade_unions.dds"
+            }
+        }
+        gacha_ball_type_icon = {
+            visible = "[IsGachaType('gacha_type_war')]"
+            blockoverride "color_texture" {
+                texture = "gfx/interface/icons/ig_icons/armed_forces.dds"
+            }
+        }
+        gacha_ball_type_icon = {
+            visible = "[IsGachaType('gacha_type_religion')]"
+            blockoverride "color_texture" {
+                texture = "gfx/interface/icons/ig_icons/devout.dds"
             }
         }
     }
