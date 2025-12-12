@@ -2,6 +2,7 @@ types gacha_popups {
 
     type gacha_ball = widget {
         block "gacha_context" {}
+        tooltip = "[Scope.Var('gacha_type').Var('gacha_type_desc').GetFlagName]"
         block "gacha_size" {
             size = { 256 256 }
         }

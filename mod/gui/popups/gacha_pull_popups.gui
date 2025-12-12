@@ -108,13 +108,14 @@ types gacha_popups {
             widget = {
                 parentanchor = top|left
                 size = { 456 510 }
+                datacontext = "[Country.MakeScope.Var('gacha_result').Var('gacha_type')]"
 
                 widget = {
-                    datacontext = "[Country.MakeScope.Var('gacha_result').Var('gacha_type')]"
                     parentanchor = top|left
                     size = { 100% 256 }
                     textbox = {
-                        text = "[Scope.Var('gacha_type_name').GetFlagName]"
+                        raw_text = "[Scope.Var('gacha_type_name').GetFlagName]"
+                        tooltip = "[Scope.Var('gacha_type_desc').GetFlagName]"
                         autoresize = yes
                         multiline = yes
                         margin = { 20 10 }
@@ -195,7 +196,8 @@ types gacha_popups {
                     parentanchor = top|left
                     size = { 100% 256 }
                     textbox = {
-                        text = "[Scope.Var('gacha_type_name').GetFlagName]"
+                        raw_text = "[Scope.Var('gacha_type_name').GetFlagName]"
+                        tooltip = "[Scope.Var('gacha_type').Var('gacha_type_desc').GetFlagName]"
                         autoresize = yes
                         multiline = yes
                         margin = { 20 10 }

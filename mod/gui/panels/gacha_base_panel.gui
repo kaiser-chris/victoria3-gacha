@@ -186,6 +186,7 @@ types gacha_base_panel_types {
                                 layoutpolicy_horizontal = expanding
                                 size = { 0 40 }
                                 raw_text = "[Scope.Var('gacha_type').Var('gacha_type_name').GetFlagName]"
+                                tooltip = "[Scope.Var('gacha_type').Var('gacha_type_desc').GetFlagName]"
                                 using = fontsize_xxl
                                 align = center
                                 elide = right
@@ -244,6 +245,7 @@ types gacha_base_panel_types {
                                 layoutpolicy_horizontal = expanding
                                 size = { 0 40 }
                                 raw_text = "[Scope.Var('gacha_type').Var('gacha_type_name').GetFlagName]"
+                                tooltip = "[Scope.Var('gacha_type').Var('gacha_type_desc').GetFlagName]"
                                 using = fontsize_xxl
                                 align = center
                                 elide = right
@@ -302,6 +304,7 @@ types gacha_base_panel_types {
                                 layoutpolicy_horizontal = expanding
                                 size = { 0 40 }
                                 raw_text = "[Scope.Var('gacha_type').Var('gacha_type_name').GetFlagName]"
+                                tooltip = "[Scope.Var('gacha_type').Var('gacha_type_desc').GetFlagName]"
                                 using = fontsize_xxl
                                 align = center
                                 elide = right
@@ -787,6 +790,7 @@ types gacha_base_panel_types {
                     multiline = yes
                     align = center
                     raw_text = "#bold [Scope.Var('gacha_type').Var('gacha_type_name').GetFlagName]#!"
+                    tooltip = "[Scope.Var('gacha_type').Var('gacha_type_desc').GetFlagName]"
                     using = fontsize_xxl
                 }
             }

@@ -85,7 +85,12 @@ create_gacha_type = {
                     name = gacha_type_name
                     value = flag:$name$
                 }
+                set_variable = {
+                    name = gacha_type_desc
+                    value = flag:$name$_desc
+                }
                 fix_variable_error = { variable = $name$ }
+                fix_variable_error = { variable = $name$_desc }
             }
             add_to_global_variable_list = {
                 name = gacha_types

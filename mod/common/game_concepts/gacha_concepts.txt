@@ -13,6 +13,11 @@ concept_gacha_rarity = {
     is_loading_tip = yes
 }
 
+concept_gacha_rarity_scaling = {
+    texture = "gfx/interface/gacha/balls/gacha_ball_gold.dds"
+    is_loading_tip = yes
+}
+
 concept_gacha_common = {
 	texture = "gfx/interface/gacha/balls/gacha_ball_gold.dds"
 	is_loading_tip = yes

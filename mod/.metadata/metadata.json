@@ -1,12 +1,13 @@
 {
-  "name": "[1.11] Gacha: Her Majesty's Boons",
+  "name": "[1.12] Gacha: Her Majesty's Boons",
   "id": "com.github.kaiser-chris.gacha",
   "version": "1.0.0",
   "game_id": "victoria3",
   "supported_game_version": "1.*",
   "short_description": "Gacha in Victoria 3",
   "tags": [
-    "1.11"
+    "1.11",
+    "1.12"
   ],
   "relationships": [
     {
