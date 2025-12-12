@@ -6,6 +6,8 @@
   "supported_game_version": "1.*",
   "short_description": "Gacha in Victoria 3",
   "tags": [
+    "Gameplay",
+    "Utilities",
     "1.11",
     "1.12"
   ],
