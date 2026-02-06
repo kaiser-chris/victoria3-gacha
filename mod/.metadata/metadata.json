@@ -19,5 +19,8 @@
       "resource_type": "mod",
       "version": "1.*"
     }
-  ]
+  ],
+  "game_custom_data" : {
+    "multiplayer_synchronized" : true
+  }
 }
